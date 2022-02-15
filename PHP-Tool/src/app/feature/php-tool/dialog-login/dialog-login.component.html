@@ -1,0 +1,20 @@
+<div mat-dialog-content>
+    <ul>
+        <li>
+            <mat-form-field appearence="fill">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="data.name")]>
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearence="fill">
+                <mat-label>Passwort</mat-label>
+                <input matInput [(ngModel)]="data.password")]>
+            </mat-form-field>
+        </li>
+    </ul>
+</div>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Abbrechen</button>
+    <button mat-button [mat-dialog-close]="data">Log In</button>
+</mat-dialog-actions>
