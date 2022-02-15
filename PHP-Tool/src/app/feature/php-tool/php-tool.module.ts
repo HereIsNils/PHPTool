@@ -1,17 +1,15 @@
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { NgModule } from "@angular/core";
 import { CoreModule } from "src/app/core/core.module";
-import { PhpToolComponent } from './php-tool/php-tool.component';
+import { PhpToolComponent } from './php-tool.component';
 
 @NgModule({
     declarations: [
-
-    
-    PhpToolComponent
+    PhpToolComponent,
   ],
     imports: [
         CoreModule,
-        DragDropModule
+        DragDropModule,
     ]
 })
 export class PHPToolModule { }

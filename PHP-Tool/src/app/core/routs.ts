@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { PHPToolModule } from '../feature/php-tool/php-tool.module';
+import { PhpToolComponent } from '../feature/php-tool/php-tool.component';
 
 export const AppRoutes: Routes = [
   {
     path: '**',
-    component: PHPToolModule,
+    component: PhpToolComponent,
   }
 ];
