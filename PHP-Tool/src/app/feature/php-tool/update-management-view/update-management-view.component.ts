@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { UserData, UserDataProps } from 'src/app/core/models/php-tool';
+import { PhpToolService } from 'src/app/core/services/php-tool.service';
 import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
 
 @Component({
@@ -8,15 +10,16 @@ import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
   styleUrls: ['./update-management-view.component.scss']
 })
 export class UpdateManagementViewComponent implements OnInit {
+  @Input() user?: UserData;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) { }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open<DialogLoginComponent>(DialogLoginComponent);
+    const dialogRef = this.dialog.open<DialogLoginComponent, UserDataProps | undefined, UserDataProps | undefined>(DialogLoginComponent, {data: undefined});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result === undefined) return;
-      console.log(result);
+      this.phpToolService.addUser(result);
     });
   }
 
