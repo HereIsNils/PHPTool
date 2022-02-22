@@ -1,4 +1,23 @@
-<button mat-raised-button color="accent"
-        (click)="openDialog()">
-    Log in
-</button>
+<div class="flex flex-col">
+    <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openDialog()">Log in</button>
+        </mat-menu>
+    </div>
+    <div>
+        <h2>Testversion</h2>
+        <div class="flex flex-row">
+            <button mat-icon-button>
+                <mat-icon>cog</mat-icon>
+            </button>
+            <mat-form-field appearance="fill">
+            <mat-select>
+                
+            </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
