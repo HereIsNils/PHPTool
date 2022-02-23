@@ -1,23 +1,63 @@
 <div class="flex flex-col">
-    <div>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="openDialog()">Log in</button>
-        </mat-menu>
+
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog()">Log in</button>
+    </mat-menu>
+  </div>
+
+  <div class="bg-slate-500 rounded-md">
+    <h2 class="font-medium text-xl text-center">Test-Version</h2>
+    <div class="flex flex-row place-content-center">
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <mat-form-field appearance="fill">
+        <mat-select></mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button>
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
     </div>
-    <div>
-        <h2>Testversion</h2>
-        <div class="flex flex-row">
-            <button mat-icon-button>
-                <mat-icon>cog</mat-icon>
-            </button>
-            <mat-form-field appearance="fill">
-            <mat-select>
-                
-            </mat-select>
-            </mat-form-field>
-        </div>
+  </div>
+
+  <div class="bg-slate-500 my-1 rounded-md">
+    <h2 class="font-medium text-xl text-center">Dev-Version</h2>
+    <div class="flex flex-row place-content-center">
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <mat-form-field appearance="fill">
+        <mat-select></mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button>
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
     </div>
+  </div>
+
+  <div class="bg-slate-500 rounded-md">
+    <h2 class="font-medium text-xl text-center">Public-Verison</h2>
+    <div class="flex flex-row place-content-center">
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <mat-form-field appearance="fill">
+        <mat-select></mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button>
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </div>
+  </div>
+
 </div>
