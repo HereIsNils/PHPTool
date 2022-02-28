@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 
 @Component({
   selector: 'app-acc-management-view',
@@ -8,6 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class AccManagementViewComponent {
   displayedColumns = ['name', 'seriennummer', 'praxis', 'version'];
   dataSource = ELEMENT_DATA;
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddUserComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
 }
 
 export interface PeriodicElement {

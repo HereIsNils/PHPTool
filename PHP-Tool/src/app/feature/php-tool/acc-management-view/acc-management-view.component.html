@@ -63,10 +63,10 @@
     <!--Header stuff/visible when collapsed.-->
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Testkunden
+        Dev-Kunden
       </mat-panel-title>
       <mat-panel-description>
-        Test-Version
+        Dev-Version
       </mat-panel-description>
     </mat-expansion-panel-header>
 
@@ -108,7 +108,7 @@
 
     <!--Footer/visible when expanded.-->
     <mat-action-row>
-        <button mat-raised-button color="accent">add user</button>
+        <button mat-raised-button color="accent" (click)="openDialog()">add user</button>
         <button mat-raised-button color="warn">delete user</button>
     </mat-action-row>
 
