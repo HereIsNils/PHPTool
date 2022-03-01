@@ -1,10 +1,30 @@
+<h1 mat-dialog-title>Erstelle einen neuen Nutzer</h1>
 <div mat-dialog-conent>
+    <p>Name des Zahnartztes</p>
     <mat-form-field appearance="fill">
-        <mat-label>Pick a user</mat-label>
+        <mat-label>Name</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <p>Seriennummer</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Seriennummer</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <p>Praxis</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Praxis</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <p>Version</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Version</mat-label>
         <mat-select></mat-select>
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="accent">add</button>
-    <button mat-raised-button color="warn">cancel</button>
+    <button mat-raised-button color="accent">Hinzufügen</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Abbrechen</button>
 </div>
