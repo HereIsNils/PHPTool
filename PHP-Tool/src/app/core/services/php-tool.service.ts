@@ -31,6 +31,7 @@ export class PhpToolService {
   onUserDataChange(): Observable<object> {
     return this.userDataChanged.asObservable();
   }
+  
 
   // adding users to class that contains all users
   addUser(props: UserDataProps): UserData {
@@ -56,6 +57,7 @@ export class PhpToolService {
     this.userDataChanged.next({});
     return devUser;
   }
+
 
   // removing users from class that contains all users
   // id is the uuid
@@ -103,6 +105,21 @@ export class PhpToolService {
     if (i === -1) return;
 
     this._devUsers.devUsers[i] = storedDevUser;
+    this.userDataChanged.next({});
+  }
+
+
+
+  // getters
+  getTestUsers(): SingleTestUser[] {
+    return this._testUsers.testUsers;
+  }
+
+  getDevUsers(): SingleDevUser[] {
+    return this._devUsers.devUsers;
+  }
+
+  userDataUpdate(): void {
     this.userDataChanged.next({});
   }
 }
