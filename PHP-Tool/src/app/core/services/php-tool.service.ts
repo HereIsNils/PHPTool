@@ -57,8 +57,6 @@ export class PhpToolService {
     return devUser;
   }
 
-
-
   // removing users from class that contains all users
   // id is the uuid
   removeUser(id: string) {
@@ -80,12 +78,10 @@ export class PhpToolService {
     this.userDataChanged.next({});
   }
 
-
-
   // updates a user
   updateUser(props: UserDataProps, id: string) {
     let storedUser = new UserData(props);
-    let i = this._users.users.findIndex(u => u.uuid === id);
+    let i = this._users.users.findIndex((u) => u.uuid === id);
     if (i === -1) return;
 
     this._users.users[i] = storedUser;
@@ -94,7 +90,7 @@ export class PhpToolService {
 
   updateTestUser(props: SingleTestUserProps, id: string) {
     let storedTestUser = new SingleTestUser(props);
-    let i = this._users.users.findIndex(u => u.uuid === id);
+    let i = this._users.users.findIndex((u) => u.uuid === id);
     if (i === -1) return;
 
     this._testUsers.testUsers[i] = storedTestUser;
@@ -103,7 +99,7 @@ export class PhpToolService {
 
   updateDevUser(props: SingleDevUserProps, id: string) {
     let storedDevUser = new SingleDevUser(props);
-    let i = this._devUsers.devUsers.findIndex(u => u.uuid === id);
+    let i = this._devUsers.devUsers.findIndex((u) => u.uuid === id);
     if (i === -1) return;
 
     this._devUsers.devUsers[i] = storedDevUser;
