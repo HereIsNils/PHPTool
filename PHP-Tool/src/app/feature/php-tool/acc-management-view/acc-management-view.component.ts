@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
+import { PhpToolService } from 'src/app/core/services/php-tool.service';
 
 @Component({
   selector: 'app-acc-management-view',
@@ -11,12 +12,14 @@ export class AccManagementViewComponent {
   displayedColumns = ['name', 'seriennummer', 'praxis', 'version'];
   dataSource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddUserComponent);
+    const dialogRef = this.dialog.open(DialogAddUserComponent, {data: undefined});
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result === undefined) return;
+      this.phpToolService.addDevUser(result);
       console.log(result);
     });
   }

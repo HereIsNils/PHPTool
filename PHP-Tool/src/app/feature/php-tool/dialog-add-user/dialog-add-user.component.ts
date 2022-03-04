@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SingleDevUserProps } from 'src/app/core/models/php-tool';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -8,7 +9,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogAddUserComponent implements OnInit {
 
-  constructor(public dialogref: MatDialogRef<DialogAddUserComponent>) {}
+  constructor(public dialogref: MatDialogRef<DialogAddUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: SingleDevUserProps ) {
+      if (data === undefined) {
+        this.data = {
+          name: "",
+          sn: 0,
+          praxis: "",
+          version: ""
+        }
+      }
+    }
 
   onNoClick(): void{
     this.dialogref.close();
