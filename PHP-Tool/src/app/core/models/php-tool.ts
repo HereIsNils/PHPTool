@@ -2,11 +2,11 @@ import { v4 as uuidv4 } from "uuid";
 
 // Array with all users
 // One user is stored as UserData
-export interface UsersProps {
-  users: UserDataProps[];
+export interface AllUsersProps {
+  users: SingleUserProps[];
 }
 // Props for one user
-export interface UserDataProps {
+export interface SingleUserProps {
   name: string;
   password: string;
   uuid?: string;
@@ -39,26 +39,26 @@ export interface SingleDevUserProps {
 
 
 // class for managing all users that have logged in
-export class Users {
-  private _users: UserData[];
+export class AllUsers {
+  private _users: SingleUser[];
 
-  constructor(props?: UsersProps) {
+  constructor(props?: AllUsersProps) {
     if (props === undefined) {
       this._users = [];
       return;
     }
-    this._users = props.users.map((u) => new UserData(u));
+    this._users = props.users.map((u) => new SingleUser(u));
   }
 
-  get users(): UserData[] {
+  get users(): SingleUser[] {
     return this._users;
   }
 
-  set users(newUsers: UserData[]) {
+  set users(newUsers: SingleUser[]) {
     this._users = newUsers;
   }
 
-  getProps(): UsersProps {
+  getProps(): AllUsersProps {
     return {
       users: this.users.map((u) => u.getProps()),
     };
@@ -66,12 +66,12 @@ export class Users {
 }
 
 // class for a single user
-export class UserData {
+export class SingleUser {
   private _uuid: string;
   private _password: string;
   private _name: string;
 
-  constructor(props: UserDataProps) {
+  constructor(props: SingleUserProps) {
     this._name = props.name;
     this._password = props.password;
     this._uuid = props.uuid ?? uuidv4();
@@ -97,7 +97,7 @@ export class UserData {
     this._password = newPassword;
   }
 
-  getProps(): UserDataProps {
+  getProps(): SingleUserProps {
     return {
       name: this.name,
       password: this.password,

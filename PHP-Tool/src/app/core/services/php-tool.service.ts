@@ -7,22 +7,22 @@ import {
   SingleDevUserProps,
   SingleTestUser,
   SingleTestUserProps,
-  UserData,
-  UserDataProps,
-  Users,
+  SingleUser,
+  SingleUserProps,
+  AllUsers,
 } from "../models/php-tool";
 
 @Injectable({
   providedIn: "root",
 })
 export class PhpToolService {
-  private _users: Users;
+  private _users: AllUsers;
   private _testUsers: AllTestUsers;
   private _devUsers: AllDevUsers;
   private userDataChanged = new Subject<object>(); // saving user, test user, dev user related data when it changes
 
   constructor() {
-    this._users = new Users();
+    this._users = new AllUsers();
     this._testUsers = new AllTestUsers();
     this._devUsers = new AllDevUsers();
     this.userDataChanged.subscribe();
@@ -34,8 +34,8 @@ export class PhpToolService {
   
 
   // adding users to class that contains all users
-  addUser(props: UserDataProps): UserData {
-    let user = new UserData(props);
+  addUser(props: SingleUserProps): SingleUser {
+    let user = new SingleUser(props);
 
     this._users.users.push(user);
     this.userDataChanged.next({});
@@ -81,8 +81,8 @@ export class PhpToolService {
   }
 
   // updates a user
-  updateUser(props: UserDataProps, id: string) {
-    let storedUser = new UserData(props);
+  updateUser(props: SingleUserProps, id: string) {
+    let storedUser = new SingleUser(props);
     let i = this._users.users.findIndex((u) => u.uuid === id);
     if (i === -1) return;
 
