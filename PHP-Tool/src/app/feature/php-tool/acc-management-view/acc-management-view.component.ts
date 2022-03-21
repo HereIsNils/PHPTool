@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { PhpToolService } from 'src/app/core/services/php-tool.service';
+import { AllDevUsers, SingleDevUserProps, AllTestUsers, SingleTestUserProps } from 'src/app/core/models/php-tool';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-acc-management-view',
@@ -10,9 +12,12 @@ import { PhpToolService } from 'src/app/core/services/php-tool.service';
 })
 export class AccManagementViewComponent {
   displayedColumns = ['name', 'seriennummer', 'praxis', 'version'];
-  dataSource = ELEMENT_DATA;
+  dataSourceDev: SingleDevUserProps[] = this.phpToolService.getDevUsers();
+  dataSourceTest: SingleTestUserProps[] = this.phpToolService.getTestUsers();
 
   constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {}
+
+  @ViewChild(MatTable) table?: MatTable<any>;
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {data: undefined});
@@ -21,32 +26,8 @@ export class AccManagementViewComponent {
       if (result === undefined) return;
       this.phpToolService.addDevUser(result);
       console.log(result);
+      this.table?.renderRows();
+      console.log(this.dataSourceDev);
     });
   }
 }
-
-export interface PeriodicElement {
-  name: string;
-  version: string;
-  sn: number;
-  praxis: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz Müller', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz rasoteh', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz rasoteh', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz rasoteh', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz rasoteh', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-  {version: '234-2349-02834', name: 'Hanz rasoteh', praxis: 'ZAHNwehLOS', sn: 239847239239487},
-];
