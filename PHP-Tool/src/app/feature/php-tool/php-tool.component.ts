@@ -29,5 +29,6 @@ export class PhpToolComponent implements OnInit {
   public refreshData(): void {
     this.devUsers = this.phpToolService.getDevUsers();
     this.testUsers = this.phpToolService.getTestUsers();
+    console.log("here");
   }
 }

@@ -6,6 +6,8 @@ import { UpdateManagementViewComponent } from './update-management-view/update-m
 import { AccManagementViewComponent } from './acc-management-view/acc-management-view.component';
 import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
+import { TestuserTableComponent } from './acc-management-view/testuser-table/testuser-table.component';
+import { DevuserTableComponent } from './acc-management-view/devuser-table/devuser-table.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +16,8 @@ import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.compon
     AccManagementViewComponent,
     DialogLoginComponent,
     DialogAddUserComponent,
+    TestuserTableComponent,
+    DevuserTableComponent,
   ],
     imports: [
         CoreModule,
