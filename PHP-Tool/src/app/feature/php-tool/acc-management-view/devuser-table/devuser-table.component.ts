@@ -13,6 +13,7 @@ import { DialogAddUserComponent } from '../../dialog-add-user/dialog-add-user.co
 export class DevuserTableComponent {
   displayedColumns = ['name', 'seriennummer', 'praxis', 'version'];
   dataSourceDev: SingleDevUserProps[] = this.phpToolService.getDevUsers();
+  clickedRows = new Set<SingleDevUserProps>();
 
   constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {}
 
@@ -28,5 +29,18 @@ export class DevuserTableComponent {
       this.table?.renderRows();
       console.log(this.dataSourceDev);
     });
+  }
+
+  deleteRows(): void {
+    this.clickedRows.forEach(row => {
+      if(row.uuid === undefined) return;
+      this.phpToolService.removeDevUser(row.uuid);
+      //this.dataSourceTest = this.dataSourceTest.filter(u => u.uuid !== row.uuid);
+      console.log(this.phpToolService.getDevUsers())
+    })
+    this.clickedRows.clear();
+
+    if(this.table === undefined) return;
+    this.table.renderRows();
   }
 }

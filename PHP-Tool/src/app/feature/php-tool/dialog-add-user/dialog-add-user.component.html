@@ -1,21 +1,21 @@
 <h1 mat-dialog-title>Erstelle einen neuen Nutzer</h1>
 <div mat-dialog-conent>
     <p>Name des Zahnarztes</p>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" autocomplete="off">
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="data.name">
+        <input matInput autocomplete="off" [(ngModel)]="data.name">
     </mat-form-field>
 
     <p>Seriennummer</p>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" autocomplete="off"> 
         <mat-label>Seriennummer</mat-label>
-        <input matInput [(ngModel)]="data.sn">
+        <input matInput autocomplete="off" [(ngModel)]="data.sn">
     </mat-form-field>
 
     <p>Praxis</p>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" autocomplete="off">
         <mat-label>Praxis</mat-label>
-        <input matInput [(ngModel)]="data.praxis">
+        <input matInput autocomplete="off" [(ngModel)]="data.praxis">
     </mat-form-field>
 
     <p>Version</p>

@@ -42,16 +42,17 @@
 
         <tr
           mat-header-row
-          *matHeaderRowDef="displayedColumns; sticky: true"
-        ></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row 
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="clickedRows.add(row)"></tr>
       </table>
     </div>
 
     <!--Footer/visible when expanded.-->
     <mat-action-row>
         <button mat-raised-button color="accent" (click)="openDialog()">add user</button>
-        <button mat-raised-button color="warn">delete user</button>
+        <button mat-raised-button color="warn" (click)="deleteRows()">delete user</button>
     </mat-action-row>
 
   </mat-expansion-panel>
