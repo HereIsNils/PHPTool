@@ -43,9 +43,10 @@
           mat-header-row
           *matHeaderRowDef="displayedColumns; sticky: true"
         ></tr>
-        <tr mat-row 
-            *matRowDef="let row; columns: displayedColumns"
-            (click)="clickedRows.add(row)"></tr>
+        <tr mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="addRow(row)"
+        [class.row-is-clicked]="clickedRows.has(row)"></tr>
       </table>
     </div>
 

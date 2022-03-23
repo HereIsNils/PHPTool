@@ -1,4 +1,4 @@
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import {DataSource } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
@@ -20,8 +20,6 @@ export class TestuserTableComponent {
 
   clickedRows = new Set<SingleTestUserProps>();
 
-  @ViewChild(MatTable) table?: MatTable<SingleTestUserProps>;
-
   constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {}
 
   openDialog(): void {
@@ -39,7 +37,7 @@ export class TestuserTableComponent {
     this.clickedRows.forEach(row => {
       if(row.uuid === undefined) return;
       this.phpToolService.removeTestUser(row.uuid);
-      console.log("rows", this.dataToDispaly)
+      this.dataToDispaly = this.phpToolService.getTestUsers();
       this.dataSourceTest.setData(this.dataToDispaly);
     })
     this.clickedRows.clear();
@@ -62,8 +60,7 @@ class TestUserDataSource extends DataSource<SingleTestUserProps> {
     this.setData(initialData);
   }
 
-  connect(): Observable<SingleTestUserProps[]> {
-    console.log("connected")  
+  connect(): Observable<SingleTestUserProps[]> {  
     return this._dataStream;
   }
 
@@ -71,6 +68,5 @@ class TestUserDataSource extends DataSource<SingleTestUserProps> {
 
   setData(data: SingleTestUserProps[]) {
     this._dataStream.next(data);
-    console.log("set", data)
   }
 }
