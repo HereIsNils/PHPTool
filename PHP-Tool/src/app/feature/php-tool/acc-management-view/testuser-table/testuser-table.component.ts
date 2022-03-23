@@ -27,7 +27,6 @@ export class TestuserTableComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined) return;
-      console.log(result);
       this.phpToolService.addTestUser(result);
       this.dataSourceTest.setData(this.dataToDispaly);
     });

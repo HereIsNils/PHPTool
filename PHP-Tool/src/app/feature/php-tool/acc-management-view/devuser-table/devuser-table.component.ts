@@ -27,7 +27,6 @@ export class DevuserTableComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined) return;
-      console.log(result);
       this.phpToolService.addDevUser(result);
       this.dataSourceDev.setData(this.dataToDispaly);
     });

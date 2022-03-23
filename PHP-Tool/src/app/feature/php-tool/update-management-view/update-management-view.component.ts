@@ -27,7 +27,6 @@ export class UpdateManagementViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result === undefined) return;
       this.phpToolService.addUser(result);
     });

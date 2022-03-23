@@ -15,6 +15,6 @@
   </ul>
 </div>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Abbrechen</button>
-  <button mat-button [mat-dialog-close]="data">Log In</button>
+  <button mat-raised-button color="accent" (click)="onNoClick()">Abbrechen</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="data">Log In</button>
 </mat-dialog-actions>
