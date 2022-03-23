@@ -8,6 +8,7 @@ import { DialogLoginComponent } from './Dialogs/dialog-login/dialog-login.compon
 import { DialogAddUserComponent } from './Dialogs/dialog-add-user/dialog-add-user.component';
 import { TestuserTableComponent } from './acc-management-view/testuser-table/testuser-table.component';
 import { DevuserTableComponent } from './acc-management-view/devuser-table/devuser-table.component';
+import { DialogSettingsComponent } from './Dialogs/dialog-settings/dialog-settings.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { DevuserTableComponent } from './acc-management-view/devuser-table/devus
     DialogAddUserComponent,
     TestuserTableComponent,
     DevuserTableComponent,
+    DialogSettingsComponent,
   ],
     imports: [
         CoreModule,

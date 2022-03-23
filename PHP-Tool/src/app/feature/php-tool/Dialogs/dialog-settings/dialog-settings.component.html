@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+    <p>Pfad auf den Server</p>
+    <mat-form-field appearance="fill" autocomplete="off">
+        <mat-label>Pfad</mat-label>
+        <input matInput autocomplete="off"/>
+    </mat-form-field>
+    
+    <p>Maximale Anzahl an Downloads</p>
+    <mat-form-field appearance="fill" autocomplete="off">
+        <mat-label>Maximale Downloads</mat-label>
+        <input matInput type="number" autocomplete="off"/>
+    </mat-form-field>
+</div>
+<div matDialogActions>
+    <button mat-raised-button color="accent" (click)="onNoClick()">Speichern</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Abbrechen</button>
+</div>
