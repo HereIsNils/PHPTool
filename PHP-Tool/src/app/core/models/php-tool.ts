@@ -35,6 +35,22 @@ export interface SingleDevUserProps {
   praxis: string; // name of praxis
   version: string; // newest version dentist has access to
 }
+// props for test-version settings
+export interface TestVersionSettingsProps {
+  path: string;
+  maxDownloads: number;
+}
+// props for dev-version settings
+export interface DevVersionSettingsProps {
+  path: string;
+  maxDownloads: number;
+}
+
+// props for public-version settings
+export interface PublicVersionSettingsProps {
+  path: string;
+  maxDownloads: number;
+}
 
 
 
@@ -274,6 +290,117 @@ export class SingleDevUser {
       sn: this._sn,
       praxis: this._praxis,
       version: this._version,
+    };
+  }
+}
+
+// class for test-version-settings
+export class TestVersionSettings {
+  private _path: string;
+  private _maxDownloads: number;
+
+  constructor(props?: TestVersionSettingsProps) {
+    if(props === undefined) {
+      this._path = "",
+      this._maxDownloads = 0
+      return;
+    }
+    this._path = props.path;
+    this._maxDownloads = props.maxDownloads;
+  }
+
+  get path(): string {
+    return this._path;
+  }
+  set path(newPath: string) {
+    this._path = newPath;
+  }
+
+  get maxDownloads(): number {
+    return this._maxDownloads;
+  }
+  set maxDownloads(newMD: number) {
+    this._maxDownloads = newMD;
+  }
+
+  getProps(): TestVersionSettingsProps {
+    return {
+      path: this._path,
+      maxDownloads: this._maxDownloads
+    };
+  }
+}
+
+// class for dev-version-settings
+export class DevVersionSettings {
+  private _path: string;
+  private _maxDownloads: number;
+
+  constructor(props?: DevVersionSettingsProps) {
+    if(props === undefined) {
+      this._path = "",
+      this._maxDownloads = 0
+      return;
+    }
+    this._path = props.path;
+    this._maxDownloads = props.maxDownloads;
+  }
+
+  get path(): string {
+    return this._path;
+  }
+  set path(newPath: string) {
+    this._path = newPath;
+  }
+
+  get maxDownloads(): number {
+    return this._maxDownloads;
+  }
+  set maxDownloads(newMD: number) {
+    this._maxDownloads = newMD;
+  }
+
+  getProps(): DevVersionSettingsProps {
+    return {
+      path: this._path,
+      maxDownloads: this._maxDownloads
+    };
+  }
+}
+
+// class for test-version-settings
+export class PublicVersionSettings {
+  private _path: string;
+  private _maxDownloads: number;
+
+  constructor(props?: PublicVersionSettingsProps) {
+    if(props === undefined) {
+      this._path = "",
+      this._maxDownloads = 0
+      return;
+    }
+    this._path = props.path;
+    this._maxDownloads = props.maxDownloads;
+  }
+
+  get path(): string {
+    return this._path;
+  }
+  set path(newPath: string) {
+    this._path = newPath;
+  }
+
+  get maxDownloads(): number {
+    return this._maxDownloads;
+  }
+  set maxDownloads(newMD: number) {
+    this._maxDownloads = newMD;
+  }
+
+  getProps(): PublicVersionSettingsProps {
+    return {
+      path: this._path,
+      maxDownloads: this._maxDownloads
     };
   }
 }

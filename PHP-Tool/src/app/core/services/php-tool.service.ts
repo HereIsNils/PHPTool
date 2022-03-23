@@ -10,6 +10,9 @@ import {
   SingleUser,
   SingleUserProps,
   AllUsers,
+  TestVersionSettings,
+  DevVersionSettings,
+  PublicVersionSettings,
 } from "../models/php-tool";
 
 @Injectable({
@@ -19,12 +22,18 @@ export class PhpToolService {
   private _users: AllUsers;
   private _testUsers: AllTestUsers;
   private _devUsers: AllDevUsers;
+  private _testVersionSettings: TestVersionSettings;
+  private _devVersionSettings: DevVersionSettings;
+  private _publicVersionSettings: PublicVersionSettings;
   private userDataChanged = new Subject<object>(); // saving user, test user, dev user related data when it changes
 
   constructor() {
     this._users = new AllUsers();
     this._testUsers = new AllTestUsers();
     this._devUsers = new AllDevUsers();
+    this._testVersionSettings = new TestVersionSettings();
+    this._devVersionSettings = new DevVersionSettings();
+    this._publicVersionSettings = new PublicVersionSettings();
     this.userDataChanged.subscribe();
   }
 
@@ -111,6 +120,9 @@ export class PhpToolService {
 
 
   // getters
+  getUsers(): SingleUserProps[] {
+    return this._users.users;
+  }
   getTestUsers(): SingleTestUser[] {
     return this._testUsers.testUsers;
   }
