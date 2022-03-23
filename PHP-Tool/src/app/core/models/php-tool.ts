@@ -36,18 +36,7 @@ export interface SingleDevUserProps {
   version: string; // newest version dentist has access to
 }
 // props for test-version settings
-export interface TestVersionSettingsProps {
-  path: string;
-  maxDownloads: number;
-}
-// props for dev-version settings
-export interface DevVersionSettingsProps {
-  path: string;
-  maxDownloads: number;
-}
-
-// props for public-version settings
-export interface PublicVersionSettingsProps {
+export interface VersionSettingsProps {
   path: string;
   maxDownloads: number;
 }
@@ -299,7 +288,7 @@ export class TestVersionSettings {
   private _path: string;
   private _maxDownloads: number;
 
-  constructor(props?: TestVersionSettingsProps) {
+  constructor(props?: VersionSettingsProps) {
     if(props === undefined) {
       this._path = "",
       this._maxDownloads = 0
@@ -323,7 +312,7 @@ export class TestVersionSettings {
     this._maxDownloads = newMD;
   }
 
-  getProps(): TestVersionSettingsProps {
+  getProps(): VersionSettingsProps {
     return {
       path: this._path,
       maxDownloads: this._maxDownloads
@@ -336,7 +325,7 @@ export class DevVersionSettings {
   private _path: string;
   private _maxDownloads: number;
 
-  constructor(props?: DevVersionSettingsProps) {
+  constructor(props?: VersionSettingsProps) {
     if(props === undefined) {
       this._path = "",
       this._maxDownloads = 0
@@ -360,7 +349,7 @@ export class DevVersionSettings {
     this._maxDownloads = newMD;
   }
 
-  getProps(): DevVersionSettingsProps {
+  getProps(): VersionSettingsProps {
     return {
       path: this._path,
       maxDownloads: this._maxDownloads
@@ -373,7 +362,7 @@ export class PublicVersionSettings {
   private _path: string;
   private _maxDownloads: number;
 
-  constructor(props?: PublicVersionSettingsProps) {
+  constructor(props?: VersionSettingsProps) {
     if(props === undefined) {
       this._path = "",
       this._maxDownloads = 0
@@ -397,7 +386,7 @@ export class PublicVersionSettings {
     this._maxDownloads = newMD;
   }
 
-  getProps(): PublicVersionSettingsProps {
+  getProps(): VersionSettingsProps {
     return {
       path: this._path,
       maxDownloads: this._maxDownloads

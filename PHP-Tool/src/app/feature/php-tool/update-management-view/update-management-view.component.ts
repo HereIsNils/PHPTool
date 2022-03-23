@@ -33,11 +33,15 @@ export class UpdateManagementViewComponent implements OnInit {
     });
   }
 
-  openSettingsDialog(): void {
+  openSettingsDialog(flag: string): void {
     const dialogRef = this.dialog.open<DialogSettingsComponent>(DialogSettingsComponent, {data: undefined});
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === undefined) return;
+      switch (flag) {
+        case "test":
+          this.phpToolService
+      }
     });
   }
 

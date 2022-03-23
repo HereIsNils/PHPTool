@@ -13,6 +13,7 @@ import {
   TestVersionSettings,
   DevVersionSettings,
   PublicVersionSettings,
+  VersionSettingsProps,
 } from "../models/php-tool";
 
 @Injectable({
@@ -22,18 +23,22 @@ export class PhpToolService {
   private _users: AllUsers;
   private _testUsers: AllTestUsers;
   private _devUsers: AllDevUsers;
+
   private _testVersionSettings: TestVersionSettings;
   private _devVersionSettings: DevVersionSettings;
   private _publicVersionSettings: PublicVersionSettings;
+
   private userDataChanged = new Subject<object>(); // saving user, test user, dev user related data when it changes
 
   constructor() {
     this._users = new AllUsers();
     this._testUsers = new AllTestUsers();
     this._devUsers = new AllDevUsers();
+
     this._testVersionSettings = new TestVersionSettings();
     this._devVersionSettings = new DevVersionSettings();
     this._publicVersionSettings = new PublicVersionSettings();
+    
     this.userDataChanged.subscribe();
   }
 
@@ -41,6 +46,10 @@ export class PhpToolService {
     return this.userDataChanged.asObservable();
   }
   
+
+  saveSettings(props: VersionSettingsProps): void {
+    
+  }
 
   // adding users to class that contains all users
   addUser(props: SingleUserProps): SingleUser {
@@ -101,7 +110,7 @@ export class PhpToolService {
 
   updateTestUser(props: SingleTestUserProps, id: string) {
     let storedTestUser = new SingleTestUser(props);
-    let i = this._users.users.findIndex((u) => u.uuid === id);
+    let i = this._testUsers.testUsers.findIndex((u) => u.uuid === id);
     if (i === -1) return;
 
     this._testUsers.testUsers[i] = storedTestUser;
