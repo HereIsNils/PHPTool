@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { Observable, ReplaySubject } from 'rxjs';
 import { SingleTestUserProps } from 'src/app/core/models/php-tool';
 import { PhpToolService } from 'src/app/core/services/php-tool.service';
-import { DialogAddUserComponent } from '../../dialog-add-user/dialog-add-user.component';
+import { DialogAddUserComponent } from '../../Dialogs/dialog-add-user/dialog-add-user.component';
 
 @Component({
   selector: 'app-testuser-table',

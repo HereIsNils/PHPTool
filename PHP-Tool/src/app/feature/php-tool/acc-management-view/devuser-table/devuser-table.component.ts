@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { SingleDevUserProps } from 'src/app/core/models/php-tool';
 import { PhpToolService } from 'src/app/core/services/php-tool.service';
-import { DialogAddUserComponent } from '../../dialog-add-user/dialog-add-user.component';
+import { DialogAddUserComponent } from '../../Dialogs/dialog-add-user/dialog-add-user.component';
 import { Observable, ReplaySubject } from 'rxjs';
 
 @Component({

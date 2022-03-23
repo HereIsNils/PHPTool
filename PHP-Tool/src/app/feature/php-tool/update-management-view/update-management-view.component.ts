@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { SingleUser, SingleUserProps } from "src/app/core/models/php-tool";
 import { PhpToolService } from "src/app/core/services/php-tool.service";
-import { DialogLoginComponent } from "../dialog-login/dialog-login.component";
+import { DialogLoginComponent } from "../Dialogs/dialog-login/dialog-login.component";
 
 @Component({
   selector: "app-update-management-view",
