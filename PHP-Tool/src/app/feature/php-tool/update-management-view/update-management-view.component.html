@@ -2,10 +2,10 @@
 
   <div class="container">
   <mat-card class="card-hover">
-    <mat-card-title class="text-center">Test-Version</mat-card-title>
+    <mat-card-title class="text-center">Pilotphase</mat-card-title>
     <mat-card-content>
       <div class="flex flex-row place-content-center">
-        <button mat-icon-button (click)="openSettingsDialog('test')">
+        <button mat-icon-button (click)="openSettingsDialog('pilot')">
           <mat-icon>settings</mat-icon>
         </button>
   
@@ -21,10 +21,10 @@
   </mat-card>
 
   <mat-card class="card-hover">
-    <mat-card-title class="text-center">Dev-Version</mat-card-title>
+    <mat-card-title class="text-center">Pilotphase-Devs</mat-card-title>
     <mat-card-content>
       <div class="flex flex-row place-content-center">
-        <button mat-icon-button (click)="openSettingsDialog('dev')">
+        <button mat-icon-button (click)="openSettingsDialog('devs')">
           <mat-icon>settings</mat-icon>
         </button>
   
@@ -40,7 +40,26 @@
   </mat-card>
 
   <mat-card class="card-hover">
-    <mat-card-title class="text-center">Public-Verison</mat-card-title>
+    <mat-card-title class="text-center">Pilotphase-Service</mat-card-title>
+    <mat-card-content>
+      <div class="flex flex-row place-content-center">
+        <button mat-icon-button (click)="openSettingsDialog('service')">
+          <mat-icon>settings</mat-icon>
+        </button>
+  
+        <mat-form-field appearance="fill">
+          <mat-select></mat-select>
+        </mat-form-field>
+  
+        <button mat-icon-button (click)="selectFile()">
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card-hover">
+    <mat-card-title class="text-center">Public-Version</mat-card-title>
     <mat-card-content>
       <div class="flex flex-row place-content-center">
         <button mat-icon-button (click)="openSettingsDialog('public')">
