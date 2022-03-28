@@ -40,7 +40,19 @@ export class UpdateManagementViewComponent implements OnInit {
       if (result === undefined) return;
       switch (flag) {
         case "test":
-          this.phpToolService
+          this.phpToolService.saveSettings(result, flag);
+          break;
+
+        case "dev":
+          this.phpToolService.saveSettings(result, flag);
+          break;
+
+        case "public":
+          this.phpToolService.saveSettings(result, flag);
+          break;
+
+        default:
+          return;
       }
     });
   }

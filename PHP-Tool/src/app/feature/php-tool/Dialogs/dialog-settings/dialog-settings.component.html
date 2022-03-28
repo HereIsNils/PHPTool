@@ -12,6 +12,6 @@
     </mat-form-field>
 </div>
 <div matDialogActions>
-    <button mat-raised-button color="accent" (click)="onNoClick()">Speichern</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="data">Speichern</button>
     <button mat-raised-button color="warn" (click)="onNoClick()">Abbrechen</button>
 </div>

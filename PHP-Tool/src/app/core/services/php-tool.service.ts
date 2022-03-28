@@ -47,8 +47,8 @@ export class PhpToolService {
   }
   
 
-  saveSettings(props: VersionSettingsProps): void {
-    
+  saveSettings(props: VersionSettingsProps, flag: string): void {
+    return;
   }
 
   // adding users to class that contains all users
