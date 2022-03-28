@@ -18,21 +18,6 @@ export class UpdateManagementViewComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open<
-      DialogLoginComponent,
-      SingleUserProps | undefined,
-      SingleUserProps | undefined
-    >(DialogLoginComponent, {
-      data: undefined,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === undefined) return;
-      this.phpToolService.addUser(result);
-    });
-  }
-
   openSettingsDialog(flag: string): void {
     const dialogRef = this.dialog.open<DialogSettingsComponent>(DialogSettingsComponent, {data: undefined});
 

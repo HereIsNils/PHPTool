@@ -1,9 +1,19 @@
-<div class="flex flex-row">
+<div class="flex flex-col w-full">
+    
+  <div class="">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog()">Log in</button>
+    </mat-menu>
+  </div>
+  
     <ng-container>
-        <app-update-management-view class="w-1/2 border-r h-screen"></app-update-management-view>
+        <app-update-management-view class="self-center items-center"></app-update-management-view>
     </ng-container>
 
     <ng-container>
-        <app-acc-management-view class="w-1/2 border-l h-screen"></app-acc-management-view>
+        <app-acc-management-view class="self-center items-center"></app-acc-management-view>
     </ng-container>
 </div>
