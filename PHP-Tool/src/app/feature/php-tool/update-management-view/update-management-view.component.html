@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="flex flex-col h-[100%]">
 
   <div>
     <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -9,55 +9,63 @@
     </mat-menu>
   </div>
 
-  <div class="bg-slate-500 rounded-md">
-    <h2 class="font-medium text-xl text-center">Test-Version</h2>
-    <div class="flex flex-row place-content-center">
-      <button mat-icon-button (click)="openSettingsDialog('test')">
-        <mat-icon>settings</mat-icon>
-      </button>
+  <div class="container">
+  <mat-card class="card-hover">
+    <mat-card-title class="text-center">Test-Version</mat-card-title>
+    <mat-card-content>
+      <div class="flex flex-row place-content-center">
+        <button mat-icon-button (click)="openSettingsDialog('test')">
+          <mat-icon>settings</mat-icon>
+        </button>
+  
+        <mat-form-field appearance="fill">
+          <mat-select></mat-select>
+        </mat-form-field>
+  
+        <button mat-icon-button>
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-      <mat-form-field appearance="fill">
-        <mat-select></mat-select>
-      </mat-form-field>
+  <mat-card class="card-hover">
+    <mat-card-title class="text-center">Dev-Version</mat-card-title>
+    <mat-card-content>
+      <div class="flex flex-row place-content-center">
+        <button mat-icon-button (click)="openSettingsDialog('dev')">
+          <mat-icon>settings</mat-icon>
+        </button>
+  
+        <mat-form-field appearance="fill">
+          <mat-select></mat-select>
+        </mat-form-field>
+  
+        <button mat-icon-button>
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-      <button mat-icon-button>
-        <mat-icon>arrow_upward</mat-icon>
-      </button>
-    </div>
-  </div>
-
-  <div class="bg-slate-500 my-1 rounded-md">
-    <h2 class="font-medium text-xl text-center">Dev-Version</h2>
-    <div class="flex flex-row place-content-center">
-      <button mat-icon-button (click)="openSettingsDialog('dev')">
-        <mat-icon>settings</mat-icon>
-      </button>
-
-      <mat-form-field appearance="fill">
-        <mat-select></mat-select>
-      </mat-form-field>
-
-      <button mat-icon-button>
-        <mat-icon>arrow_upward</mat-icon>
-      </button>
-    </div>
-  </div>
-
-  <div class="bg-slate-500 rounded-md">
-    <h2 class="font-medium text-xl text-center">Public-Verison</h2>
-    <div class="flex flex-row place-content-center">
-      <button mat-icon-button (click)="openSettingsDialog('public')">
-        <mat-icon>settings</mat-icon>
-      </button>
-
-      <mat-form-field appearance="fill">
-        <mat-select></mat-select>
-      </mat-form-field>
-
-      <button mat-icon-button>
-        <mat-icon>arrow_upward</mat-icon>
-      </button>
-    </div>
-  </div>
+  <mat-card mat-ripple class="card-hover">
+    <mat-card-title class="text-center">Public-Verison</mat-card-title>
+    <mat-card-content>
+      <div class="flex flex-row place-content-center">
+        <button mat-icon-button (click)="openSettingsDialog('public')">
+          <mat-icon>settings</mat-icon>
+        </button>
+  
+        <mat-form-field appearance="fill">
+          <mat-select></mat-select>
+        </mat-form-field>
+  
+        <button mat-icon-button>
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
 
 </div>

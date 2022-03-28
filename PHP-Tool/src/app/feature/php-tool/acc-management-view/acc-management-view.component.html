@@ -1,9 +1,16 @@
-<mat-accordion multi>
-  <ng-container>
-    <app-testuser-table></app-testuser-table>
-  </ng-container>
+<div class="container">
+  <mat-card class="card-hover">
+    <mat-card-title>Testkunden</mat-card-title>
+    <mat-card-content>
+      <app-testuser-table></app-testuser-table>
+    </mat-card-content>
+  </mat-card>
 
-  <ng-container>
-    <app-devuser-table></app-devuser-table>
-  </ng-container>
-</mat-accordion>
+  <mat-card class="card-hover">
+    <mat-card-title>Devkunden</mat-card-title>
+    <mat-card-content>
+      <app-devuser-table></app-devuser-table>
+    </mat-card-content>
+  </mat-card>
+
+</div>
