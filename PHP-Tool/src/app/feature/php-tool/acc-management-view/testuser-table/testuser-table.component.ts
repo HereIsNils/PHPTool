@@ -1,4 +1,4 @@
-import {DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
@@ -20,10 +20,10 @@ export class TestuserTableComponent {
 
   clickedRows = new Set<SingleTestUserProps>();
 
-  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {}
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) { }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddUserComponent, {data: undefined});
+    const dialogRef = this.dialog.open(DialogAddUserComponent, { data: undefined });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined) return;
@@ -34,7 +34,7 @@ export class TestuserTableComponent {
 
   deleteRows(): void {
     this.clickedRows.forEach(row => {
-      if(row.uuid === undefined) return;
+      if (row.uuid === undefined) return;
       this.phpToolService.removeTestUser(row.uuid);
       this.dataToDispaly = this.phpToolService.getTestUsers();
       this.dataSourceTest.setData(this.dataToDispaly);
@@ -43,7 +43,7 @@ export class TestuserTableComponent {
   }
 
   addRow(row: SingleTestUserProps): void {
-    if(this.clickedRows.has(row) === true) {
+    if (this.clickedRows.has(row) === true) {
       this.clickedRows.delete(row);
       return;
     }
@@ -54,16 +54,16 @@ export class TestuserTableComponent {
 class TestUserDataSource extends DataSource<SingleTestUserProps> {
   private _dataStream = new ReplaySubject<SingleTestUserProps[]>();
 
-  constructor(initialData: SingleTestUserProps[]){
+  constructor(initialData: SingleTestUserProps[]) {
     super();
     this.setData(initialData);
   }
 
-  connect(): Observable<SingleTestUserProps[]> {  
+  connect(): Observable<SingleTestUserProps[]> {
     return this._dataStream;
   }
 
-  disconnect(): void {console.log("disconnected")}
+  disconnect(): void { console.log("disconnected") }
 
   setData(data: SingleTestUserProps[]) {
     this._dataStream.next(data);

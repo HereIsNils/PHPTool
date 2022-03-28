@@ -289,9 +289,9 @@ export class TestVersionSettings {
   private _maxDownloads: number;
 
   constructor(props?: VersionSettingsProps) {
-    if(props === undefined) {
+    if (props === undefined) {
       this._path = "",
-      this._maxDownloads = 0
+        this._maxDownloads = 0
       return;
     }
     this._path = props.path;
@@ -326,9 +326,9 @@ export class DevVersionSettings {
   private _maxDownloads: number;
 
   constructor(props?: VersionSettingsProps) {
-    if(props === undefined) {
+    if (props === undefined) {
       this._path = "",
-      this._maxDownloads = 0
+        this._maxDownloads = 0
       return;
     }
     this._path = props.path;
@@ -363,9 +363,9 @@ export class PublicVersionSettings {
   private _maxDownloads: number;
 
   constructor(props?: VersionSettingsProps) {
-    if(props === undefined) {
+    if (props === undefined) {
       this._path = "",
-      this._maxDownloads = 0
+        this._maxDownloads = 0
       return;
     }
     this._path = props.path;

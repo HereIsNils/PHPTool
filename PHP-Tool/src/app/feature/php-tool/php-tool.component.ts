@@ -15,9 +15,9 @@ export class PhpToolComponent implements OnInit {
   devUsers?: SingleDevUser[];
   testUsers?: SingleTestUser[];
   private userDataChangeSubscription: Subscription;
-  
 
-  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) { 
+
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {
     this.userDataChangeSubscription = phpToolService.onUserDataChange().subscribe(() => this.refreshData())
   }
 
@@ -43,7 +43,7 @@ export class PhpToolComponent implements OnInit {
   ngOnDestroy(): void {
     this.userDataChangeSubscription.unsubscribe()
   }
-  
+
   public refreshData(): void {
     this.devUsers = this.phpToolService.getDevUsers();
     this.testUsers = this.phpToolService.getTestUsers();

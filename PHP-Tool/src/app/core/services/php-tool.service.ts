@@ -38,14 +38,14 @@ export class PhpToolService {
     this._testVersionSettings = new TestVersionSettings();
     this._devVersionSettings = new DevVersionSettings();
     this._publicVersionSettings = new PublicVersionSettings();
-    
+
     this.userDataChanged.subscribe();
   }
 
   onUserDataChange(): Observable<object> {
     return this.userDataChanged.asObservable();
   }
-  
+
 
   saveSettings(props: VersionSettingsProps, flag: string): void {
     return;

@@ -11,18 +11,18 @@ import { empty } from 'uuidv4';
 export class DialogAddUserComponent implements OnInit {
 
   constructor(public dialogref: MatDialogRef<DialogAddUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SingleDevUserProps ) {
-      if (data === undefined) {
-        this.data = {
-          name: "",
-          sn: 0,
-          praxis: "",
-          version: ""
-        }
+    @Inject(MAT_DIALOG_DATA) public data: SingleDevUserProps) {
+    if (data === undefined) {
+      this.data = {
+        name: "",
+        sn: 0,
+        praxis: "",
+        version: ""
       }
     }
+  }
 
-  onNoClick(): void{
+  onNoClick(): void {
     this.dialogref.close();
   }
 

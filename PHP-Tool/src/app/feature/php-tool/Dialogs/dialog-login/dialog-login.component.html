@@ -3,18 +3,18 @@
     <li>
       <mat-form-field appearence="fill" autocomplete="off">
         <mat-label>Name</mat-label>
-        <input matInput autocomplete="off"/>
+        <input matInput autocomplete="off" />
       </mat-form-field>
     </li>
     <li>
       <mat-form-field appearence="fill" autocomplete="off">
         <mat-label>Passwort</mat-label>
-        <input matInput autocomplete="off"/>
+        <input matInput autocomplete="off" />
       </mat-form-field>
     </li>
   </ul>
 </div>
 <mat-dialog-actions>
-  <button mat-raised-button color="accent" (click)="onNoClick()">Abbrechen</button>
-  <button mat-raised-button color="warn" [mat-dialog-close]="data">Log In</button>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Abbrechen</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="data">Log In</button>
 </mat-dialog-actions>

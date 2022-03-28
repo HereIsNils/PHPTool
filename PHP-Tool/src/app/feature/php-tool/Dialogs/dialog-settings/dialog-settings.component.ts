@@ -12,20 +12,20 @@ export class DialogSettingsComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogSettingsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: VersionSettingsProps) {
-      if (data === undefined) {
-        this.data = {
-          path: "",
-          maxDownloads: 0
-        }
+    if (data === undefined) {
+      this.data = {
+        path: "",
+        maxDownloads: 0
       }
     }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   ngOnInit(): void {
-      
+
   }
 
 }
