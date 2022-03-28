@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { SingleUser, SingleUserProps } from "src/app/core/models/php-tool";
 import { PhpToolService } from "src/app/core/services/php-tool.service";
 import { DialogLoginComponent } from "../Dialogs/dialog-login/dialog-login.component";
@@ -15,7 +16,8 @@ export class UpdateManagementViewComponent implements OnInit {
 
   constructor(
     private phpToolService: PhpToolService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   openSettingsDialog(flag: string): void {
@@ -39,7 +41,19 @@ export class UpdateManagementViewComponent implements OnInit {
         default:
           return;
       }
+
+      this.snackBar.open("Änderungen erfolgreich gespeichert.", "", {duration: 3000})
     });
+  }
+
+  selectFile(): void {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = _ => {
+      let file = input.files
+      console.log(file);
+    };
+    input.click();
   }
 
   ngOnInit(): void {}
