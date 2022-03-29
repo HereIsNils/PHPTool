@@ -35,7 +35,7 @@ export class PhpTool2Service {
     return this._allAcconuts.accounts;
   }
 
-  
+
 
 
   /*---------- create ------------*/
@@ -43,7 +43,7 @@ export class PhpTool2Service {
     let userGroup = new UserGroup(props);
     this._allUserGroups.userGroups.push(userGroup);
     this.dataChanged.next({});
-    
+
     return userGroup;
   }
 
