@@ -10,7 +10,7 @@
   </div>
 
   <ng-container *ngIf="userGroups">
-    <app-usergroup-view *ngFor="let userGroup of userGroups"></app-usergroup-view>
+    <app-usergroup-view *ngFor="let userGroup of userGroups" [userGroup]="userGroup" [userGroupId]="userGroup.uuid"></app-usergroup-view>
   </ng-container>
 
   <div class="py-[40px] mx-4">
