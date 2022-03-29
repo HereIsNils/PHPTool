@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool2';
+import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool2';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,23 @@ export class PhpTool2Service {
     return this._allAcconuts.accounts;
   }
 
+  getAllUsers(idGroup?: string): SingleUser[] {
+    console.log("service test", idGroup);
+    if (idGroup === undefined) return {} as SingleUser[];
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === idGroup);
 
+    console.log("service test2", idGroup, this._allUserGroups.userGroups[i].users);
+    return this._allUserGroups.userGroups[i].users;
+  }
+
+  getUser(idUser: string, idGroup?: string): SingleUser {
+    if (idGroup === undefined) return {} as SingleUser;
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === idGroup);
+    if (i === -1) return {} as SingleUser;
+    let iUser = this._allUserGroups.userGroups[i].users.findIndex(u => u.uuid === idUser)
+    if (iUser === -1) return {} as SingleUser;
+    return this._allUserGroups.userGroups[i].users[i];
+  }
 
 
   /*---------- create ------------*/
@@ -53,6 +69,15 @@ export class PhpTool2Service {
     this.dataChanged.next({});
 
     return account;
+  }
+
+  createUser(props: SingleUserProps, id?: string): SingleUser {
+    let user = new SingleUser(props);
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
+    if (i === -1) return user;
+    this._allUserGroups.userGroups[i].users.push(user);
+    this.dataChanged.next({});
+    return user;
   }
 
 
@@ -81,6 +106,18 @@ export class PhpTool2Service {
     let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
 
     this._allUserGroups.userGroups[i].settings = storedSettings;
+    this.dataChanged.next({});
+  }
+
+
+  /*---------- remove ------------*/
+
+  removeUser(idUser: string, idGroup?: string): void {
+    if (idGroup === undefined) return;
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === idGroup);
+    if (i === -1) return;
+
+    this._allUserGroups.userGroups[i].users = this._allUserGroups.userGroups[i].users.filter((u) => u.uuid !== idUser);
     this.dataChanged.next({});
   }
 }

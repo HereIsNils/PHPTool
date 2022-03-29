@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { SingleDevUser, SingleTestUser, SingleUserProps } from 'src/app/core/models/php-tool';
-import { SingleAccount, SingleAccountProps, UserGroup } from 'src/app/core/models/php-tool2';
-import { PhpToolService } from 'src/app/core/services/php-tool.service';
+import { SingleAccount, SingleAccountProps, SingleUser, UserGroup } from 'src/app/core/models/php-tool2';
 import { PhpTool2Service } from 'src/app/core/services/php-tool2.service';
 import { DialogCreateUsergroupComponent } from './Dialogs/dialog-create-usergroup/dialog-create-usergroup.component';
 import { DialogLoginComponent } from './Dialogs/dialog-login/dialog-login.component';
@@ -17,6 +15,7 @@ export class PhpToolComponent implements OnInit {
 
   userGroups?: UserGroup[];
   accounts?: SingleAccount[];
+  users?: SingleUser[];
   private dataChangeSubscription: Subscription;
 
 
@@ -45,7 +44,8 @@ export class PhpToolComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === undefined) return;
       this.phpToolService.createUserGroup(result);
-    })
+    });
+    console.log("ugs ",this.phpToolService.getUserGroups());
   }
 
   ngOnInit(): void {
@@ -59,5 +59,6 @@ export class PhpToolComponent implements OnInit {
   public refreshData(): void {
     this.userGroups = this.phpToolService.getUserGroups();
     this.accounts = this.phpToolService.getAccounts();
+    this.users = this.phpToolService.getAllUsers();
   }
 }

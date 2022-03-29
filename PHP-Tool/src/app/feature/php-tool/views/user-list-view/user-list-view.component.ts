@@ -8,6 +8,7 @@ import { SingleUser } from 'src/app/core/models/php-tool2';
 })
 export class UserListViewComponent implements OnInit {
   @Input() users?: SingleUser[];
+  @Input() userGroupId?: string;
   constructor() { }
 
   ngOnInit(): void {
