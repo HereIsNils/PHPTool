@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SingleDevUserProps } from 'src/app/core/models/php-tool';
-import { empty } from 'uuidv4';
+import { SingleUserProps } from 'src/app/core/models/php-tool2';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -11,7 +10,7 @@ import { empty } from 'uuidv4';
 export class DialogAddUserComponent implements OnInit {
 
   constructor(public dialogref: MatDialogRef<DialogAddUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SingleDevUserProps) {
+    @Inject(MAT_DIALOG_DATA) public data: SingleUserProps) {
     if (data === undefined) {
       this.data = {
         name: "",
