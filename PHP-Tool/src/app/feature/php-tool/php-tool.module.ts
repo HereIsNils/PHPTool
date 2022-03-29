@@ -11,6 +11,8 @@ import { DevuserTableComponent } from './acc-management-view/devuser-table/devus
 import { DialogSettingsComponent } from './Dialogs/dialog-settings/dialog-settings.component';
 import { UsergroupViewComponent } from './usergroup-view/usergroup-view.component';
 import { DialogCreateUsergroupComponent } from './Dialogs/dialog-create-usergroup/dialog-create-usergroup.component';
+import { UsergroupSettingsViewComponent } from './views/usergroup-settings-view/usergroup-settings-view.component';
+import { UserListViewComponent } from './views/user-list-view/user-list-view.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +26,8 @@ import { DialogCreateUsergroupComponent } from './Dialogs/dialog-create-usergrou
     DialogSettingsComponent,
     UsergroupViewComponent,
     DialogCreateUsergroupComponent,
+    UsergroupSettingsViewComponent,
+    UserListViewComponent,
   ],
     imports: [
         CoreModule,
