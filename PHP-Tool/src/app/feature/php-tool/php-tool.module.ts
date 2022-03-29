@@ -10,6 +10,7 @@ import { TestuserTableComponent } from './acc-management-view/testuser-table/tes
 import { DevuserTableComponent } from './acc-management-view/devuser-table/devuser-table.component';
 import { DialogSettingsComponent } from './Dialogs/dialog-settings/dialog-settings.component';
 import { UsergroupViewComponent } from './usergroup-view/usergroup-view.component';
+import { DialogCreateUsergroupComponent } from './Dialogs/dialog-create-usergroup/dialog-create-usergroup.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { UsergroupViewComponent } from './usergroup-view/usergroup-view.componen
     DevuserTableComponent,
     DialogSettingsComponent,
     UsergroupViewComponent,
+    DialogCreateUsergroupComponent,
   ],
     imports: [
         CoreModule,
