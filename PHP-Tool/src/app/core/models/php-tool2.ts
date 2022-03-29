@@ -10,6 +10,12 @@ export interface UserGroupProps {
     settings: UserGroupSettingsProps; // Settings for the User Group
 }
 
+// Props for the settings of a User Group
+export interface UserGroupSettingsProps {
+    path: string; // Path on the FTP Server
+    limit: number; // Limit for how many users can download the file
+}
+
 // Props for a Single User
 export interface SingleUserProps {
     uuid?: string; // Unique id to identify the dentist
@@ -19,16 +25,11 @@ export interface SingleUserProps {
     version: string; // Newest version dentist has access to
 }
 
-// Props for the settings of a User Group
-export interface UserGroupSettingsProps {
-    path: string; // Path on the FTP Server
-    limit: number; // Limit for how many users can download the file
-}
-
 // Props for all Accounts
 export interface AllAccountsProps {
     accounts: SingleAccountProps[]; // Array with all Accounts
 }
+
 // Props for an Account
 export interface SingleAccountProps {
     uuid?: string; // Unique id to identify the account
@@ -48,8 +49,8 @@ export class UserGroup {
 
         this._uuid = props.uuid ?? uuidv4();
         this._name = props.name;
-        this._settings = props.settings;
         this._users = props.users.map(u => new SingleUser(u));
+        this._settings = props.settings = new UserGroupSettings(this.settings);
     }
 
     get uuid(): string {
@@ -83,6 +84,37 @@ export class UserGroup {
             name: this.name,
             settings: this.settings,
             users: this.users.map(u => u.getProps())
+        }
+    }
+}
+
+export class UserGroupSettings {
+    private _path: string;
+    private _limit: number;
+
+    constructor(props: UserGroupSettingsProps) {
+        this._path = props.path;
+        this._limit = props.limit;
+    }
+
+    get path(): string {
+        return this._path;
+    }
+    set path(newPath: string) {
+        this._path = newPath;
+    }
+
+    get limit(): number {
+        return this._limit;
+    }
+    set limit(newLimit: number) {
+        this._limit = newLimit;
+    }
+
+    getProps(): UserGroupSettingsProps {
+        return {
+            path: this.path,
+            limit: this.limit
         }
     }
 }
@@ -136,43 +168,79 @@ export class SingleUser {
 
     getProps(): SingleUserProps {
         return {
-            uuid: this._uuid,
-            name: this._name,
-            sn: this._sn,
-            praxis: this._praxis,
-            version: this._version,
+            uuid: this.uuid,
+            name: this.name,
+            sn: this.sn,
+            praxis: this.praxis,
+            version: this.version,
         };
     }
 }
 
-export class UserGroupSettings {
-    private _path: string;
-    private _limit: number;
 
-    constructor(props: UserGroupSettingsProps) {
-        this._path = props.path;
-        this._limit = props.limit;
+export class SingleAccount {
+    private _uuid: string;
+    private _name: string;
+    private _password: string;
+    
+    constructor(props: SingleAccountProps) {
+        this._uuid = props.uuid ?? uuidv4();
+        this._name = props.name;
+        this._password = props.password;
+    }
+    
+    get uuid(): string {
+        return this._uuid;
     }
 
-    get path(): string {
-        return this._path;
-    }
-    set path(newPath: string) {
-        this._path = newPath;
+    get name(): string {
+        return this._name;
     }
 
-    get limit(): number {
-        return this._limit;
+    set name(newName: string) {
+        this._name = newName;
     }
-    set limit(newLimit: number) {
-        this._limit = newLimit;
+
+    get password(): string {
+        return this._password;
+    }
+
+    set password(newPassword: string) {
+        this._password = newPassword;
+    }
+    
+    getProps(): SingleAccountProps {
+        return {
+            uuid: this.uuid,
+            name: this.name,
+            password: this.password,
+        };
     }
 }
 
 export class AllAccounts {
+    private _accounts: SingleAccount[];
+    
 
-}
+    constructor(props?: AllAccountsProps) {
+        if (props === undefined) {
+            this._accounts = [];
+            return;
+        }
+        this._accounts = props.accounts.map(a => new SingleAccount(a));
+    }
 
-export class SingleAccount {
+    get accounts(): SingleAccount[] {
+        return this._accounts;
+    }
 
+    set accounts(newAccs: SingleAccount[]) {
+        this._accounts = newAccs;
+    }
+
+    getProps(): AllAccountsProps {
+        return {
+            accounts: this.accounts.map(a => a.getProps())
+        }
+    }
 }
