@@ -1,3 +1,7 @@
 <div *ngIf="userGroup">
-    <p>{{userGroup.name}}<-name </p>
+
+    <h1>{{userGroup.name}}</h1>
+
+    <app-usergroup-settings-view [settings]="userGroup.settings"></app-usergroup-settings-view>
+    <app-user-list-view [users]="userGroup.users"></app-user-list-view>
 </div>
