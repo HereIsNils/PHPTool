@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Neue Nutzergruppe erstellen</h1>
+<div mat-dialog-conent>
+
+    <p>Name der Nutzergruppe</p>
+    <mat-form-field appearance="fill" autocomplete="off">
+        <mat-label>Name</mat-label>
+        <input matInput autocomplete="off" [(ngModel)]="data.name">
+    </mat-form-field>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="accent" [mat-dialog-close]="data">Hinzufügen</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Abbrechen</button>
+</div>
