@@ -2,6 +2,11 @@ import { v4 as uuidv4 } from "uuid";
 
 /*---------- interfaces ------------*/
 
+// Props for all User Groups
+export interface AllUserGroupsProps {
+    userGroups: UserGroupProps[]; // Array with all User Groups
+}
+
 // Props for a User Group
 export interface UserGroupProps {
     uuid?: string; // Unique id to identify the User Group
@@ -39,6 +44,33 @@ export interface SingleAccountProps {
 
 /*---------- classes ------------*/
 
+export class AllUserGroups {
+    private _userGroups: UserGroup[]
+
+    constructor(props?: AllUserGroupsProps) {
+        if (props === undefined) {
+            this._userGroups = [];
+            return;
+        }
+
+        this._userGroups = props.userGroups.map(u => new UserGroup(u));
+    }
+
+    get userGroups(): UserGroup[] {
+        return this._userGroups;
+    }
+
+    set userGroups(newUG: UserGroup[]) {
+        this._userGroups = newUG;
+    }
+
+    getProps(): AllUserGroupsProps {
+        return {
+            userGroups: this.userGroups.map(u => u.getProps())
+        }
+    }
+}
+
 export class UserGroup {
     private _uuid: string;
     private _name: string;
@@ -47,10 +79,19 @@ export class UserGroup {
 
     constructor(props: UserGroupProps) {
 
+        /*if (props === undefined) {
+            this._uuid = "";
+            this._name = "";
+            this._users = [];
+            this._settings = {} as UserGroupSettings;
+
+            return;
+        }*/
+
         this._uuid = props.uuid ?? uuidv4();
         this._name = props.name;
         this._users = props.users.map(u => new SingleUser(u));
-        this._settings = props.settings = new UserGroupSettings(this.settings);
+        this._settings = props.settings = new UserGroupSettings(props.settings);
     }
 
     get uuid(): string {
@@ -182,13 +223,13 @@ export class SingleAccount {
     private _uuid: string;
     private _name: string;
     private _password: string;
-    
+
     constructor(props: SingleAccountProps) {
         this._uuid = props.uuid ?? uuidv4();
         this._name = props.name;
         this._password = props.password;
     }
-    
+
     get uuid(): string {
         return this._uuid;
     }
@@ -208,7 +249,7 @@ export class SingleAccount {
     set password(newPassword: string) {
         this._password = newPassword;
     }
-    
+
     getProps(): SingleAccountProps {
         return {
             uuid: this.uuid,
@@ -220,7 +261,7 @@ export class SingleAccount {
 
 export class AllAccounts {
     private _accounts: SingleAccount[];
-    
+
 
     constructor(props?: AllAccountsProps) {
         if (props === undefined) {
