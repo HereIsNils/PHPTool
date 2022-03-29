@@ -12,6 +12,7 @@ import { UsergroupViewComponent } from './usergroup-view/usergroup-view.componen
 import { DialogCreateUsergroupComponent } from './Dialogs/dialog-create-usergroup/dialog-create-usergroup.component';
 import { UsergroupSettingsViewComponent } from './views/usergroup-settings-view/usergroup-settings-view.component';
 import { UserListViewComponent } from './views/user-list-view/user-list-view.component';
+import { TableViewComponent } from './views/user-list-view/table-view/table-view.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { UserListViewComponent } from './views/user-list-view/user-list-view.com
     DialogCreateUsergroupComponent,
     UsergroupSettingsViewComponent,
     UserListViewComponent,
+    TableViewComponent,
   ],
     imports: [
         CoreModule,
