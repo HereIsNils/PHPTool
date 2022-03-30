@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { SingleAccountProps } from "src/app/core/models/php-tool2";
+import { SingleAccountProps } from "src/app/core/models/php-tool";
 
 @Component({
   selector: "app-dialog-login",

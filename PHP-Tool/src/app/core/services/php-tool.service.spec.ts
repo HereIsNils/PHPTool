@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PhpTool2Service } from './php-tool2.service';
+import { PhpToolService } from './php-tool.service';
 
 describe('PhpTool2Service', () => {
-  let service: PhpTool2Service;
+  let service: PhpToolService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PhpTool2Service);
+    service = TestBed.inject(PhpToolService);
   });
 
   it('should be created', () => {

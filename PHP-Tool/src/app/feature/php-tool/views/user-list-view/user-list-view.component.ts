@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SingleUser } from 'src/app/core/models/php-tool2';
+import { SingleUser } from 'src/app/core/models/php-tool';
 
 @Component({
   selector: 'app-user-list-view',

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool2';
+import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PhpTool2Service {
+export class PhpToolService {
   //private _userGroup: UserGroup;
   private _allUserGroups: AllUserGroups;
   private _allAcconuts: AllAccounts;

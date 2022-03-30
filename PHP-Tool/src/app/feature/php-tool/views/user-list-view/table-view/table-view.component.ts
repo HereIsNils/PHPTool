@@ -2,8 +2,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject, Observable, Subscription } from 'rxjs';
-import { SingleUser, SingleUserProps } from 'src/app/core/models/php-tool2';
-import { PhpTool2Service } from 'src/app/core/services/php-tool2.service';
+import { SingleUser, SingleUserProps } from 'src/app/core/models/php-tool';
+import { PhpToolService } from 'src/app/core/services/php-tool.service';
 import { DialogAddUserComponent } from '../../../Dialogs/dialog-add-user/dialog-add-user.component';
 
 @Component({
@@ -22,7 +22,7 @@ export class TableViewComponent implements OnInit{
 
   clickedRows = new Set<SingleUserProps>();
 
-  constructor(private phpToolService: PhpTool2Service, public dialog: MatDialog) { 
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) { 
     this.usersChangedSubscription = phpToolService.onDataChaged().subscribe(() => this.refreshUsers())
   }
 

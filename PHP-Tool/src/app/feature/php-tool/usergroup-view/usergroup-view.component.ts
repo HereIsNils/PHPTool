@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserGroup } from 'src/app/core/models/php-tool2';
-import { PhpTool2Service } from 'src/app/core/services/php-tool2.service';
+import { UserGroup } from 'src/app/core/models/php-tool';
+import { PhpToolService } from 'src/app/core/services/php-tool.service';
 
 @Component({
   selector: 'app-usergroup-view',
@@ -12,7 +12,7 @@ export class UsergroupViewComponent implements OnInit {
   @Input() userGroup?: UserGroup;
   @Input() userGroupId?: string;
 
-  constructor(private phpToolService: PhpTool2Service) { }
+  constructor(private phpToolService: PhpToolService) { }
 
   ngOnInit(): void {
   }

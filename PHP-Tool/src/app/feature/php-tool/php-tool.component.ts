@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { SingleAccount, SingleAccountProps, SingleUser, UserGroup, UserGroupProps } from 'src/app/core/models/php-tool2';
-import { PhpTool2Service } from 'src/app/core/services/php-tool2.service';
+import { SingleAccount, SingleAccountProps, SingleUser, UserGroup, UserGroupProps } from 'src/app/core/models/php-tool';
+import { PhpToolService } from 'src/app/core/services/php-tool.service';
 import { DialogCreateUsergroupComponent } from './Dialogs/dialog-create-usergroup/dialog-create-usergroup.component';
 import { DialogLoginComponent } from './Dialogs/dialog-login/dialog-login.component';
 
@@ -18,7 +18,7 @@ export class PhpToolComponent implements OnInit {
   private dataChangeSubscription: Subscription;
 
 
-  constructor(private phpToolService: PhpTool2Service, public dialog: MatDialog) {
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {
     this.dataChangeSubscription = phpToolService.onDataChaged().subscribe(() => this.refreshData())
   }
 

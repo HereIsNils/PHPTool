@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserGroupSettings } from 'src/app/core/models/php-tool2';
-import { PhpTool2Service } from 'src/app/core/services/php-tool2.service';
+import { UserGroupSettings } from 'src/app/core/models/php-tool';
+import { PhpToolService } from 'src/app/core/services/php-tool.service';
 import { DialogSettingsComponent } from '../../Dialogs/dialog-settings/dialog-settings.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class UsergroupSettingsViewComponent implements OnInit {
 
   @Input() settings?: UserGroupSettings;
   constructor(
-    private phpToolService: PhpTool2Service,
+    private phpToolService: PhpToolService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
