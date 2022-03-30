@@ -36,6 +36,7 @@ export class PhpTool2Service {
   }
 
   getAllUsers(idGroup?: string): SingleUser[] {
+    console.log("gau", idGroup)
     if (idGroup === undefined) return {} as SingleUser[];
     let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === idGroup);
 

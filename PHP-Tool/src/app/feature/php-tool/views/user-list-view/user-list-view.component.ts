@@ -7,7 +7,6 @@ import { SingleUser } from 'src/app/core/models/php-tool2';
   styleUrls: ['./user-list-view.component.scss']
 })
 export class UserListViewComponent implements OnInit {
-  @Input() users?: SingleUser[];
   @Input() userGroupId?: string;
   constructor() { }
 
