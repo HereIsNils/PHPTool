@@ -1,7 +1,10 @@
-<div *ngIf="userGroup">
+<fieldset *ngIf="userGroup" class="userGroupContainer">
 
-    <h1>{{userGroup.name}}</h1>
+    <legend class="legend px-2 ml-16">{{userGroup.name}}</legend>
 
-    <app-usergroup-settings-view [settings]="userGroup.settings"></app-usergroup-settings-view>
-    <app-user-list-view [userGroupId]="userGroupId"></app-user-list-view>
-</div>
+    <div class="inner self-center">
+        <app-usergroup-settings-view [settings]="userGroup.settings"></app-usergroup-settings-view>
+        <app-user-list-view [userGroupId]="userGroupId"></app-user-list-view>
+    </div>
+
+</fieldset>
