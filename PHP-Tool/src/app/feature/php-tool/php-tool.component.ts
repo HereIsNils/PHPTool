@@ -45,7 +45,6 @@ export class PhpToolComponent implements OnInit {
       if (result === undefined) return;
       this.phpToolService.createUserGroup(result);
     });
-    console.log("ugs ",this.phpToolService.getUserGroups());
   }
 
   ngOnInit(): void {
