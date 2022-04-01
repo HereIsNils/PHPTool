@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserGroupProps } from 'src/app/core/models/php-tool';
 
@@ -8,6 +9,8 @@ import { UserGroupProps } from 'src/app/core/models/php-tool';
   styleUrls: ['./dialog-create-usergroup.component.scss']
 })
 export class DialogCreateUsergroupComponent implements OnInit {
+
+  textFormControl = new FormControl('', [Validators.required, Validators.minLength(1)]);
 
   constructor(public dialogref: MatDialogRef<DialogCreateUsergroupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserGroupProps) {

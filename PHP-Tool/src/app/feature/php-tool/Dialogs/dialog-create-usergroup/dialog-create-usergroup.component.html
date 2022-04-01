@@ -4,11 +4,13 @@
     <p>Name der Nutzergruppe</p>
     <mat-form-field appearance="fill" autocomplete="off">
         <mat-label>Name</mat-label>
-        <input matInput autocomplete="off" [(ngModel)]="data.name">
+        <input type="text" id="nameInput" matInput [formControl]="textFormControl" autocomplete="off" [(ngModel)]="data.name">
+        <mat-error *ngIf="textFormControl.hasError('required')">Pflichtfeld</mat-error>
     </mat-form-field>
-    
+
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="accent" [mat-dialog-close]="data">Hinzufügen</button>
+    <button mat-raised-button [disabled]="textFormControl.hasError('required')" color="accent"
+        [mat-dialog-close]="data">Hinzufügen</button>
     <button mat-raised-button color="warn" (click)="onNoClick()">Abbrechen</button>
 </div>

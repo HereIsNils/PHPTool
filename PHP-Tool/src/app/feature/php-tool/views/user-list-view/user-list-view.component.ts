@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SingleUser } from 'src/app/core/models/php-tool';
+import { SingleUser, UserGroup } from 'src/app/core/models/php-tool';
 
 @Component({
   selector: 'app-user-list-view',
@@ -8,6 +8,8 @@ import { SingleUser } from 'src/app/core/models/php-tool';
 })
 export class UserListViewComponent implements OnInit {
   @Input() userGroupId?: string;
+  @Input() userGroup?: UserGroup;
+  
   constructor() { }
 
   ngOnInit(): void {
