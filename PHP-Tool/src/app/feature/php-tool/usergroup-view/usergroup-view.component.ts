@@ -14,6 +14,10 @@ export class UsergroupViewComponent implements OnInit {
 
   constructor(private phpToolService: PhpToolService) { }
 
+  deleteUserGroup() {
+    this.phpToolService.removeUserGroup(this.userGroupId);
+  }
+
   ngOnInit(): void {
   }
 

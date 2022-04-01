@@ -36,7 +36,6 @@ export class PhpToolService {
   }
 
   getAllUsers(idGroup?: string): SingleUser[] {
-    console.log("gau", idGroup)
     if (idGroup === undefined) return {} as SingleUser[];
     let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === idGroup);
 
@@ -117,6 +116,15 @@ export class PhpToolService {
     if (i === -1) return;
 
     this._allUserGroups.userGroups[i].users = this._allUserGroups.userGroups[i].users.filter((u) => u.uuid !== idUser);
+    this.dataChanged.next({});
+  }
+
+  removeUserGroup(id?: string) {
+    if (id === undefined) return;
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
+    if (i === -1) return;
+
+    this._allUserGroups.userGroups = this._allUserGroups.userGroups.filter((u) => u.uuid !== id);
     this.dataChanged.next({});
   }
 }

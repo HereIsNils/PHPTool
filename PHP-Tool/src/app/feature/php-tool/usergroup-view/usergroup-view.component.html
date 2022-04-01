@@ -5,6 +5,11 @@
     <div class="inner self-center">
         <app-usergroup-settings-view [settings]="userGroup.settings"></app-usergroup-settings-view>
         <app-user-list-view [userGroupId]="userGroupId" [userGroup]="userGroup"></app-user-list-view>
+        <div>
+            <button mat-icon-button color="accent" (click)="deleteUserGroup()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
     </div>
 
 </fieldset>
