@@ -73,7 +73,6 @@ class UserDataSource extends DataSource<SingleUserProps> {
 
   constructor(initialData?: SingleUserProps[]) {
     super();
-    console.log("inidata", initialData)
     this.setData(initialData);
   }
 
@@ -81,7 +80,7 @@ class UserDataSource extends DataSource<SingleUserProps> {
     return this._dataStream;
   }
 
-  disconnect(): void { console.log("disconnected") }
+  disconnect(): void {}
 
   setData(data?: SingleUserProps[]) {
     if (data === undefined) return;
