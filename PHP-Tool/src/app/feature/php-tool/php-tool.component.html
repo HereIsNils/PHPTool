@@ -13,9 +13,7 @@
     <app-usergroup-view *ngFor="let userGroup of userGroups" [userGroup]="userGroup" [userGroupId]="userGroup.uuid"></app-usergroup-view>
   </ng-container>
 
-  <div class="py-[40px] mx-4">
-    <button mat-fab color="accent" (click)="createUserGroup()">
-      <mat-icon>add</mat-icon>
-    </button>
+  <div class="w-max mx-4">
+    <button mat-raised-button color="accent" (click)="createUserGroup()">Neue Gruppe erstellen</button>
   </div>
 </div>
