@@ -6,14 +6,12 @@ import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUs
   providedIn: 'root'
 })
 export class PhpToolService {
-  //private _userGroup: UserGroup;
   private _allUserGroups: AllUserGroups;
   private _allAcconuts: AllAccounts;
 
   private dataChanged = new Subject<object>();
 
   constructor() {
-    //this._userGroup = new UserGroup();
     this._allUserGroups = new AllUserGroups();
     this._allAcconuts = new AllAccounts();
 
