@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutes } from './core/routs';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CoreModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
