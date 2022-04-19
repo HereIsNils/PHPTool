@@ -2,6 +2,10 @@
 
 // This file returns the correct update file 
 
+// our root dir, database dir & log file
+$rootdir = $_SERVER["DOCUMENT_ROOT"];
+$rootdir = $rootdir."/connectbase";
+$databasedir = $rootdir."/database";
 
 // args[7]: 0:patcomid, 1:installedversion, 2:downloadedversion, 3:tutype, 4:tuserial, 5:tutable, 6:tufw, 7:tulic
 function getUpdateFile($args) {
