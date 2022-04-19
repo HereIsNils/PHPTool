@@ -1,5 +1,8 @@
 <?php 
 
+// Diese Datei bereitet die Daten die von der Einheit kommen auf und gibt sie an users.php weiter
+// Dann wird auf die Update Datei gewartet und an die Einheit zurück gegeben
+
 //TODO
 //UserGruppe finden (wenn nichts gefunden wird -> public version)
 // Versionsnummer überprüfen (wenn < wie downloaded -> public < downloaded -> return 0)
