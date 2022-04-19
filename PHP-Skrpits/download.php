@@ -49,5 +49,8 @@ $parameters = array($patcomid, $installedversion, $downloadedversion, $tutype, $
 // some IoT log :-) 
 $datetime = date("Y-m-d H:i:s");
 
+include "update.php";
+$updateFile = getUpdateFile($parameters);
+
 exit()
 ?>
