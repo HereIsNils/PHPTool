@@ -15,13 +15,16 @@ export class PhpToolService {
     this._allUserGroups = new AllUserGroups();
     this._allAcconuts = new AllAccounts();
 
-    this.dataChanged.subscribe();
+    this.dataChanged.subscribe(() => this.saveDataJson());
   }
 
   onDataChaged(): Observable<object> {
     return this.dataChanged.asObservable();
   }
 
+  saveDataJson(): void {
+    console.log(JSON.stringify(this._allUserGroups.getProps(), null, 2)); // 2 = pretty print
+  }
 
   /*---------- get ------------*/
 
