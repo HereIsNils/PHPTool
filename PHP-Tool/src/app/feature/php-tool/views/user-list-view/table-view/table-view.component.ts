@@ -55,9 +55,11 @@ export class TableViewComponent implements OnInit {
   }
 
   refreshUsers() {
-    if(this.users !== undefined) {
+    try {
       this.users = this.phpToolService.getAllUsers(this.userGroupId);
-    } return;
+    } catch {
+      return;
+    }
   }
 
   ngOnInit(): void {
