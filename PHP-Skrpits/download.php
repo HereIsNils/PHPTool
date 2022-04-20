@@ -33,6 +33,20 @@ function getParameter( $name )
     return $returnvalue;
 }
 
+// return ip adress
+function getUserIpAddr(){
+    if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+        //ip from share internet
+        $ip = $_SERVER["HTTP_CLIENT_IP"];
+    }elseif(!empty($_SERVER["HTTP_X_FORWARDED_FOR"])){
+        //ip pass from proxy
+        $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+    }elseif(!empty($_SERVER["REMOTE_ADDR"])){
+        $ip = $_SERVER["REMOTE_ADDR"];
+    }
+    return $ip;
+}
+
 
 // get currently installed version from request parameter string
 // if not found -> default version is 0
@@ -48,6 +62,7 @@ $tulic = getParameter("tulic" );
 $parameters = array($patcomid, $installedversion, $downloadedversion, $tutype, $tuserial, $tutable, $tufw, $tulic);
 // some IoT log :-) 
 $datetime = date("Y-m-d H:i:s");
+$userIp = getUserIpAddr();
 
 include "update.php";
 $updateFile = getUpdateFile($parameters);
