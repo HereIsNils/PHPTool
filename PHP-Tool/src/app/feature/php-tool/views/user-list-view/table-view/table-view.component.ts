@@ -11,10 +11,10 @@ import { DialogAddUserComponent } from '../../../Dialogs/dialog-add-user/dialog-
   templateUrl: './table-view.component.html',
   styleUrls: ['./table-view.component.scss']
 })
-export class TableViewComponent implements OnInit{
+export class TableViewComponent implements OnInit {
 
   @Input() userGroupId?: string;
-  users?: SingleUser[]; 
+  users?: SingleUser[];
   private usersChangedSubscription: Subscription;
 
   displayedColumns = ['name', 'seriennummer', 'praxis', 'version'];
@@ -22,7 +22,7 @@ export class TableViewComponent implements OnInit{
 
   clickedRows = new Set<SingleUserProps>();
 
-  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) { 
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {
     this.usersChangedSubscription = phpToolService.onDataChaged().subscribe(() => this.refreshUsers())
   }
 
@@ -32,7 +32,7 @@ export class TableViewComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       if (result === undefined) return;
       this.phpToolService.createUser(result, this.userGroupId);
-      this.dataSource.setData(this.users); 
+      this.dataSource.setData(this.users);
     });
   }
 
@@ -55,7 +55,9 @@ export class TableViewComponent implements OnInit{
   }
 
   refreshUsers() {
-    this.users = this.phpToolService.getAllUsers(this.userGroupId);
+    if(this.users !== undefined) {
+      this.users = this.phpToolService.getAllUsers(this.userGroupId);
+    } return;
   }
 
   ngOnInit(): void {
@@ -80,7 +82,7 @@ class UserDataSource extends DataSource<SingleUserProps> {
     return this._dataStream;
   }
 
-  disconnect(): void {}
+  disconnect(): void { }
 
   setData(data?: SingleUserProps[]) {
     if (data === undefined) return;
