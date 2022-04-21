@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { writeFileSync, readFileSync } from 'fs';
 import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool';
-const fs = require('fs');
 const fileName = "./database/userGroups.json";
+const xhttp = new XMLHttpRequest();
 
 @Injectable({
   providedIn: 'root'
@@ -32,21 +31,36 @@ export class PhpToolService {
 
   saveDataJson(): void {
     try {
-      writeFileSync(fileName, JSON.stringify(this._allUserGroups.getProps(), null, 2));
-      console.log("file has been created.");
+      xhttp.onload = function() {
+        console.log("Data send.");
+      }
+
+      xhttp.open("POST", "setUserGroups.php");
+      xhttp.setRequestHeader("Connect-type", "application/x-www-form-urlecoded");
+      xhttp.send(JSON.stringify(this._allUserGroups.getProps(), null, 2));
+     
     } catch (err) {
       console.error(err); return;
     }
   }
 
   loadAllUserGroups(): void {
-    let userGroups = readFileSync(fileName, 'utf8');
-    if (userGroups !== null) {
+    let userGroups = '';
+
       try {
+        xhttp.onload = function() {
+          const userGroupObj = JSON.parse(this.responseText);
+          userGroups = userGroupObj;
+          console.log("POST successful!")
+        }
+        xhttp.open("POST", "getUserGroups.php");
+        xhttp.send();
+
         this._allUserGroups = new AllUserGroups(JSON.parse(userGroups));
+
       } catch (err) {
+        xhttp.abort();
         console.error(err);
-      }
     }
   }
 
