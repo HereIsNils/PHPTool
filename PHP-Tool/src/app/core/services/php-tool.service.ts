@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool';
+const fs = require('fs');
+const fileName = "./database/userGroups.json"; 
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PhpToolService {
   private _allUserGroups: AllUserGroups;
   private _allAcconuts: AllAccounts;
@@ -14,6 +18,7 @@ export class PhpToolService {
   constructor() {
     this._allUserGroups = new AllUserGroups();
     this._allAcconuts = new AllAccounts();
+    this.loadAllUserGroups();
 
     this.dataChanged.subscribe(() => this.saveDataJson());
   }
@@ -22,8 +27,24 @@ export class PhpToolService {
     return this.dataChanged.asObservable();
   }
 
+  /*---------- database stuff ------------*/
+
   saveDataJson(): void {
-    console.log(JSON.stringify(this._allUserGroups.getProps(), null, 2)); // 2 = pretty print
+    fs.writeFileSync(fileName, JSON.stringify(this._allUserGroups.getProps(), null, 2), (err: any) => {
+      if (err) { console.error(err); return; };
+      console.log("file has been created.");
+    });
+  }
+
+  loadAllUserGroups():void {
+    let userGroups = fs.readFileSync(fileName, 'utf8');
+    if (userGroups !== null) {
+      try {
+        this._allUserGroups = new AllUserGroups(JSON.parse(userGroups));
+      } catch(err) {
+        console.error(err);
+      }
+    }
   }
 
   /*---------- get ------------*/
