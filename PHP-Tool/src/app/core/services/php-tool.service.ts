@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool';
-const fileName = "./database/userGroups.json";
+
 const xhttp = new XMLHttpRequest();
 
 @Injectable({
