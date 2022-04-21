@@ -1,6 +1,6 @@
 <?php
 
-// Diese Datei gibt die Usergruppen an die webseite zurück
+// Diese Datei erstellt die JSON Datei mit allen Usergruppen
 
 
 ?>
