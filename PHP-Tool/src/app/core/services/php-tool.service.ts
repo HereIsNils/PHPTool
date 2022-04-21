@@ -34,12 +34,13 @@ export class PhpToolService {
       xhttp.onload = function() {
         console.log("Data send.");
       }
-
+      console.log(JSON.stringify(this._allUserGroups.getProps(), null, 2));
       xhttp.open("POST", "setUserGroups.php");
       xhttp.setRequestHeader("Connect-type", "application/x-www-form-urlecoded");
       xhttp.send(JSON.stringify(this._allUserGroups.getProps(), null, 2));
      
     } catch (err) {
+      xhttp.abort();
       console.error(err); return;
     }
   }
@@ -56,7 +57,10 @@ export class PhpToolService {
         xhttp.open("POST", "getUserGroups.php");
         xhttp.send();
 
-        this._allUserGroups = new AllUserGroups(JSON.parse(userGroups));
+        if(userGroups !== '') {
+          this._allUserGroups = new AllUserGroups(JSON.parse(userGroups));
+          return;
+        }
 
       } catch (err) {
         xhttp.abort();
