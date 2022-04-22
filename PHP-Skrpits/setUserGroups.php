@@ -13,7 +13,7 @@ $logfile = $rootdir."/logs/".date("Y-m-d").".txt";
 $obj = json_decode($_POST["userGroups"], flase);
 
 try {
-    // creates or overrides file with data from the POST request
+    // creates or overwrides file with data from the POST request
     $file = fopen($databasedir . "userData.json", "w+", false, $obj);
 } catch(Exception $e) {
     echo $e->getMessage();
