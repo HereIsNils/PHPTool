@@ -143,7 +143,8 @@ export class PhpToolService {
     this.dataChanged.next({});
   }
 
-  updateUserGroupSettings(id: string, props: UserGroupSettingsProps) {
+  updateUserGroupSettings(props: UserGroupSettingsProps, id?: string) {
+    if(id === undefined) return;
     let storedSettings = new UserGroupSettings(props);
     let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
 

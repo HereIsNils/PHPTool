@@ -13,17 +13,23 @@ import { DialogSettingsComponent } from '../../Dialogs/dialog-settings/dialog-se
 export class UsergroupSettingsViewComponent implements OnInit {
 
   @Input() settings?: UserGroupSettings;
+  @Input() userGroupId?: string;
+
   constructor(
     private phpToolService: PhpToolService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
 
-  openSettingsDialog(flag: string): void {
-    const dialogRef = this.dialog.open<DialogSettingsComponent>(DialogSettingsComponent, {data: undefined});
+  openSettingsDialog(): void {
+    const dialogRef = this.dialog.open(DialogSettingsComponent, {data: undefined});
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.snackBar.open("Änderungen erfolgreich gespeichert.", "", {duration: 3000})
+      this.snackBar.open("Änderungen erfolgreich gespeichert.", "", {duration: 3000});
+
+      if(result === undefined) {
+        this.phpToolService.updateUserGroupSettings(result, this.userGroupId);
+      }
     });
   }
   ngOnInit(): void {

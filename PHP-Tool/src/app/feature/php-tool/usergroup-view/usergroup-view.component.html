@@ -3,7 +3,7 @@
     <legend class="text-xl antialiased font-semibold px-2 ml-16">{{userGroup.name}}</legend>
 
     <div class="inner self-center">
-        <app-usergroup-settings-view [settings]="userGroup.settings"></app-usergroup-settings-view>
+        <app-usergroup-settings-view [settings]="userGroup.settings" [userGroupId]="userGroup.uuid"></app-usergroup-settings-view>
         <app-user-list-view [userGroupId]="userGroupId" [userGroup]="userGroup"></app-user-list-view>
         <div>
             <button mat-icon-button color="accent" (click)="deleteUserGroup()">
