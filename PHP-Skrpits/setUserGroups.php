@@ -14,7 +14,7 @@ $obj = json_decode($_POST["userGroups"], flase);
 
 try {
     // creates or overwrides file with data from the POST request
-    $file = fopen($databasedir . "userData.json", "w+", false, $obj);
+    $file = fopen($databasedir . "/userData.json", "w+", false, $obj);
     fclose($file);
 } catch(Exception $e) {
     echo $e->getMessage();
