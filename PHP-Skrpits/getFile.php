@@ -6,6 +6,7 @@
 $rootdir = $_SERVER["DOCUMENT_ROOT"];
 $rootdir = $rootdir."/connectbase";
 $databasedir = $rootdir."/database";
+$userGroupFile = json_decode(file_get_contents($databasedir . "/userGroup.json", true)); // associative true so the json file gets returned as an associative array
 
 // args[7]: 0:patcomid, 1:installedversion, 2:downloadedversion, 3:tutype, 4:tuserial, 5:tutable, 6:tufw, 7:tulic
 function getUpdateFile($args) {
