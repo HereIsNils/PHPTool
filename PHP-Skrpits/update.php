@@ -18,7 +18,7 @@ function getUpdateFile($args) {
         $updateFile = updateFromUG($a[1], $args[1], $args[2]);
     } else {
         // false -> public
-        $updateFile = updateFromPG($args[1], $args[2]);
+        $updateFile = updateFromPb($args[1], $args[2]);
     }
 
     return $updateFile;
@@ -41,7 +41,7 @@ function updateFromUG($userGroup, $installedV, $downloadedV) {
 }
 
 //get update file from public group
-function updateFromPG($installedV, $downloadedV) {
+function updateFromPb($installedV, $downloadedV) {
     $updateFile = "0";
 
     return $updateFile; 
