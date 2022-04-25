@@ -64,8 +64,8 @@ $parameters = array($patcomid, $installedversion, $downloadedversion, $tutype, $
 $datetime = date("Y-m-d H:i:s");
 $userIp = getUserIpAddr();
 
-// get the file from update.php
-include "update.php";
+// get the file from getFile.php
+include "getFile.php";
 $updateFile = getUpdateFile($parameters);
 
 exit()
