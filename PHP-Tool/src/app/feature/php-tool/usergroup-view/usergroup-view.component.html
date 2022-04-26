@@ -1,4 +1,4 @@
-<fieldset *ngIf="userGroup" class="userGroupContainer" (click)="updateUserGroup()">
+<fieldset *ngIf="userGroup" class="userGroupContainer">
 
     <legend class="text-xl antialiased font-semibold px-2 ml-16">{{userGroup.name}}</legend>
 
@@ -6,7 +6,7 @@
         <button mat-icon-button (click)="selectFile()">
             <mat-icon>arrow_upward</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="updateUserGroup()">
             <mat-icon>settings</mat-icon>
         </button>
         <app-user-list-view [userGroupId]="userGroupId" [userGroup]="userGroup"></app-user-list-view>
