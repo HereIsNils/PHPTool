@@ -1,0 +1,339 @@
+{
+  "userGroups": [
+    {
+      "uuid": "7b958455-d8b3-40f1-b926-5332fe5044fd",
+      "name": "pilot",
+      "settings": {
+        "_path": "",
+        "_limit": 10
+      },
+      "users": [
+        {
+          "uuid": "f7631c86-bc54-4e8d-95da-b80a36330816",
+          "name": "1",
+          "sn": "1",
+          "praxis": "1",
+          "version": ""
+        },
+        {
+          "uuid": "929ff997-4aa1-4926-8cbc-ffb9fb6b455a",
+          "name": "2",
+          "sn": "2",
+          "praxis": "2",
+          "version": ""
+        },
+        {
+          "uuid": "ed30613c-338a-434d-bbaa-8619d427fab9",
+          "name": "3",
+          "sn": "3",
+          "praxis": "3",
+          "version": ""
+        }
+      ]
+    },
+    {
+      "uuid": "539d87c0-1d49-4815-bee6-c61558fc8fb4",
+      "name": "development",
+      "settings": {
+        "_path": "",
+        "_limit": null
+      },
+      "users": [
+        {
+          "uuid": "4df21b41-07c4-4690-9dd1-6fcb7df0a318",
+          "name": "1",
+          "sn": "1",
+          "praxis": "1",
+          "version": ""
+        },
+        {
+          "uuid": "5180e042-6f75-4a74-8c5b-9452507de9a5",
+          "name": "2",
+          "sn": "2",
+          "praxis": "2",
+          "version": ""
+        },
+        {
+          "uuid": "12a20fab-8179-41cc-9172-3e9785ef170f",
+          "name": "3",
+          "sn": "3",
+          "praxis": "3",
+          "version": ""
+        }
+      ]
+    },
+    {
+      "uuid": "5a12116b-5192-49e8-97b5-35152d4ad080",
+      "name": "asai",
+      "settings": {
+        "_path": "",
+        "_limit": null
+      },
+      "users": [
+        {
+          "uuid": "cbf42541-a4ff-4e92-b44d-2d9abb023c0a",
+          "name": "1",
+          "sn": "1",
+          "praxis": "1",
+          "version": ""
+        },
+        {
+          "uuid": "66b38e4a-5702-4e3b-9398-8de011405afa",
+          "name": "2",
+          "sn": "2",
+          "praxis": "2",
+          "version": ""
+        },
+        {
+          "uuid": "05d02c8b-86d7-4ad4-a6af-9cbf22a7785b",
+          "name": "3",
+          "sn": "3",
+          "praxis": "3",
+          "version": ""
+        }
+      ]
+    }
+  ]
+}
+
+
+---------------------------------------------------------------------------------------------------------------
+associative = true
+
+array (
+  'userGroups' => 
+  array (
+    0 => 
+    array (
+      'uuid' => '7b958455-d8b3-40f1-b926-5332fe5044fd',
+      'name' => 'pilot',
+      'settings' => 
+      array (
+        '_path' => '',
+        '_limit' => 10,
+      ),
+      'users' => 
+      array (
+        0 => 
+        array (
+          'uuid' => 'f7631c86-bc54-4e8d-95da-b80a36330816',
+          'name' => '1',
+          'sn' => '1',
+          'praxis' => '1',
+          'version' => '',
+        ),
+        1 => 
+        array (
+          'uuid' => '929ff997-4aa1-4926-8cbc-ffb9fb6b455a',
+          'name' => '2',
+          'sn' => '2',
+          'praxis' => '2',
+          'version' => '',
+        ),
+        2 => 
+        array (
+          'uuid' => 'ed30613c-338a-434d-bbaa-8619d427fab9',
+          'name' => '3',
+          'sn' => '3',
+          'praxis' => '3',
+          'version' => '',
+        ),
+      ),
+    ),
+    1 => 
+    array (
+      'uuid' => '539d87c0-1d49-4815-bee6-c61558fc8fb4',
+      'name' => 'development',
+      'settings' => 
+      array (
+        '_path' => '',
+        '_limit' => NULL,
+      ),
+      'users' => 
+      array (
+        0 => 
+        array (
+          'uuid' => '4df21b41-07c4-4690-9dd1-6fcb7df0a318',
+          'name' => '1',
+          'sn' => '1',
+          'praxis' => '1',
+          'version' => '',
+        ),
+        1 => 
+        array (
+          'uuid' => '5180e042-6f75-4a74-8c5b-9452507de9a5',
+          'name' => '2',
+          'sn' => '2',
+          'praxis' => '2',
+          'version' => '',
+        ),
+        2 => 
+        array (
+          'uuid' => '12a20fab-8179-41cc-9172-3e9785ef170f',
+          'name' => '3',
+          'sn' => '3',
+          'praxis' => '3',
+          'version' => '',
+        ),
+      ),
+    ),
+    2 => 
+    array (
+      'uuid' => '5a12116b-5192-49e8-97b5-35152d4ad080',
+      'name' => 'asai',
+      'settings' => 
+      array (
+        '_path' => '',
+        '_limit' => NULL,
+      ),
+      'users' => 
+      array (
+        0 => 
+        array (
+          'uuid' => 'cbf42541-a4ff-4e92-b44d-2d9abb023c0a',
+          'name' => '1',
+          'sn' => '1',
+          'praxis' => '1',
+          'version' => '',
+        ),
+        1 => 
+        array (
+          'uuid' => '66b38e4a-5702-4e3b-9398-8de011405afa',
+          'name' => '2',
+          'sn' => '2',
+          'praxis' => '2',
+          'version' => '',
+        ),
+        2 => 
+        array (
+          'uuid' => '05d02c8b-86d7-4ad4-a6af-9cbf22a7785b',
+          'name' => '3',
+          'sn' => '3',
+          'praxis' => '3',
+          'version' => '',
+        ),
+      ),
+    ),
+  ),
+)
+
+
+--------------------------------------------------------------------------------------------------------------
+associative = false
+
+(object) array(
+   'userGroups' => 
+  array (
+    0 => 
+    (object) array(
+       'uuid' => '7b958455-d8b3-40f1-b926-5332fe5044fd',
+       'name' => 'pilot',
+       'settings' => 
+      (object) array(
+         '_path' => '',
+         '_limit' => 10,
+      ),
+       'users' => 
+      array (
+        0 => 
+        (object) array(
+           'uuid' => 'f7631c86-bc54-4e8d-95da-b80a36330816',
+           'name' => '1',
+           'sn' => '1',
+           'praxis' => '1',
+           'version' => '',
+        ),
+        1 => 
+        (object) array(
+           'uuid' => '929ff997-4aa1-4926-8cbc-ffb9fb6b455a',
+           'name' => '2',
+           'sn' => '2',
+           'praxis' => '2',
+           'version' => '',
+        ),
+        2 => 
+        (object) array(
+           'uuid' => 'ed30613c-338a-434d-bbaa-8619d427fab9',
+           'name' => '3',
+           'sn' => '3',
+           'praxis' => '3',
+           'version' => '',
+        ),
+      ),
+    ),
+    1 => 
+    (object) array(
+       'uuid' => '539d87c0-1d49-4815-bee6-c61558fc8fb4',
+       'name' => 'development',
+       'settings' => 
+      (object) array(
+         '_path' => '',
+         '_limit' => NULL,
+      ),
+       'users' => 
+      array (
+        0 => 
+        (object) array(
+           'uuid' => '4df21b41-07c4-4690-9dd1-6fcb7df0a318',
+           'name' => '1',
+           'sn' => '1',
+           'praxis' => '1',
+           'version' => '',
+        ),
+        1 => 
+        (object) array(
+           'uuid' => '5180e042-6f75-4a74-8c5b-9452507de9a5',
+           'name' => '2',
+           'sn' => '2',
+           'praxis' => '2',
+           'version' => '',
+        ),
+        2 => 
+        (object) array(
+           'uuid' => '12a20fab-8179-41cc-9172-3e9785ef170f',
+           'name' => '3',
+           'sn' => '3',
+           'praxis' => '3',
+           'version' => '',
+        ),
+      ),
+    ),
+    2 => 
+    (object) array(
+       'uuid' => '5a12116b-5192-49e8-97b5-35152d4ad080',
+       'name' => 'asai',
+       'settings' => 
+      (object) array(
+         '_path' => '',
+         '_limit' => NULL,
+      ),
+       'users' => 
+      array (
+        0 => 
+        (object) array(
+           'uuid' => 'cbf42541-a4ff-4e92-b44d-2d9abb023c0a',
+           'name' => '1',
+           'sn' => '1',
+           'praxis' => '1',
+           'version' => '',
+        ),
+        1 => 
+        (object) array(
+           'uuid' => '66b38e4a-5702-4e3b-9398-8de011405afa',
+           'name' => '2',
+           'sn' => '2',
+           'praxis' => '2',
+           'version' => '',
+        ),
+        2 => 
+        (object) array(
+           'uuid' => '05d02c8b-86d7-4ad4-a6af-9cbf22a7785b',
+           'name' => '3',
+           'sn' => '3',
+           'praxis' => '3',
+           'version' => '',
+        ),
+      ),
+    ),
+  ),
+)
