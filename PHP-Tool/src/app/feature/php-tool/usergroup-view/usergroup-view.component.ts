@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserGroup } from 'src/app/core/models/php-tool';
 import { PhpToolService } from 'src/app/core/services/php-tool.service';
+import { DialogCreateUsergroupComponent } from '../Dialogs/dialog-create-usergroup/dialog-create-usergroup.component';
 
 @Component({
   selector: 'app-usergroup-view',
@@ -12,13 +15,44 @@ export class UsergroupViewComponent implements OnInit {
   @Input() userGroup?: UserGroup;
   @Input() userGroupId?: string;
 
-  constructor(private phpToolService: PhpToolService) { }
+  constructor(
+    private phpToolService: PhpToolService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar) {}
 
   deleteUserGroup() {
     this.phpToolService.removeUserGroup(this.userGroupId);
   }
 
+  updateUserGroup() {
+    let data = this.phpToolService.getUserGroup(this.userGroupId);
+    const dialogRef = this.dialog.open(DialogCreateUsergroupComponent, {data});
+
+    dialogRef.afterClosed().subscribe((result: UserGroup) => {
+      if(result === undefined) {
+        this.snackBar.open("Keine Änderungen vorgenommen.", "", {duration: 3000}); 
+        return;
+      }
+      try{
+        this.phpToolService.updateUserGroup(result, this.userGroupId);
+        this.snackBar.open("Änderungen erfolgreich gespeichert.", "", {duration: 3000});
+      } catch(e) {
+        console.error(e);
+        this.snackBar.open("Änderungen konnten nicht gespeichtert werden!", "", {duration: 3000});
+      }});
+  }
+
   ngOnInit(): void {
+  }
+
+  selectFile(): void {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = _ => {
+      let file = input.files
+      console.log(file);
+    };
+    input.click();
   }
 
 }

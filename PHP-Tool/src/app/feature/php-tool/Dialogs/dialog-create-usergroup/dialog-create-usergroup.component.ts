@@ -17,11 +17,8 @@ export class DialogCreateUsergroupComponent implements OnInit {
     if (data === undefined) {
       this.data = {
         name: "",
-        users: [],
-        settings: {
-          path: "",
-          limit: NaN
-        }
+        limit: "",
+        users: []
       }
     }
   }

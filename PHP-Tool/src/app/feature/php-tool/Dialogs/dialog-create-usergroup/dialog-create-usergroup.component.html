@@ -8,6 +8,12 @@
         <mat-error *ngIf="textFormControl.hasError('required')">Pflichtfeld</mat-error>
     </mat-form-field>
 
+    <p>Limit für Downloads pro Tag</p>
+    <mat-form-field appearance="fill" autocomplete="off">
+        <mat-label>Limit</mat-label>
+        <input type="number" id="limitInput" matInput autocomplete="off" [(ngModel)]="data.limit">
+    </mat-form-field>
+
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button [disabled]="textFormControl.hasError('required')" color="accent"

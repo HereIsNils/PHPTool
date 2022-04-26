@@ -69,9 +69,16 @@ export class PhpToolService {
   }
 
   /*---------- get ------------*/
-
+  // returns all user groups
   getUserGroups(): UserGroup[] {
     return this._allUserGroups.userGroups;
+  }
+  // returns a single usergroup based on uuid
+  getUserGroup(id?: string): UserGroup {
+    if(id === undefined) return {} as UserGroup;
+
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
+    return this._allUserGroups.userGroups[i];
   }
 
   getAccounts(): SingleAccount[] {
@@ -125,7 +132,8 @@ export class PhpToolService {
 
   /*---------- update ------------*/
 
-  updateUserGroup(id: string, props: UserGroupProps) {
+  updateUserGroup(props: UserGroupProps, id?: string) {
+    if(id === undefined) return;
     let storedUserGroup = new UserGroup(props);
     let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
     if (i === -1) return;
