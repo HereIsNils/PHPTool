@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps, UserGroupSettings, UserGroupSettingsProps } from '../models/php-tool';
+import { AllAccounts, AllUserGroups, SingleAccount, SingleAccountProps, SingleUser, SingleUserProps, UserGroup, UserGroupProps } from '../models/php-tool';
 
 const xhttp = new XMLHttpRequest();
 
@@ -74,15 +74,6 @@ export class PhpToolService {
     return this._allUserGroups.userGroups;
   }
 
-  getUserGroupSettings(id?: string): UserGroupSettings {
-    if (id === undefined) return {} as UserGroupSettings;
-    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
-    if(i === -1) 
-      return {} as UserGroupSettings;
-
-    return this._allUserGroups.userGroups[i].settings;
-  }
-
   getAccounts(): SingleAccount[] {
     return this._allAcconuts.accounts;
   }
@@ -151,17 +142,6 @@ export class PhpToolService {
     this._allAcconuts.accounts[i] = storedAccount;
     this.dataChanged.next({});
   }
-
-  updateUserGroupSettings(props: UserGroupSettingsProps, id?: string) {
-    if(id === undefined || props == undefined) return;
-    let storedSettings = new UserGroupSettings(props);
-    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
-    if(i === -1) return;
-    
-    this._allUserGroups.userGroups[i].settings = storedSettings;
-    this.dataChanged.next({});
-  }
-
 
   /*---------- remove ------------*/
 
