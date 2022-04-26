@@ -74,6 +74,15 @@ export class PhpToolService {
     return this._allUserGroups.userGroups;
   }
 
+  getUserGroupSettings(id?: string): UserGroupSettings {
+    if (id === undefined) return {} as UserGroupSettings;
+    let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
+    if(i === -1) 
+      return {} as UserGroupSettings;
+
+    return this._allUserGroups.userGroups[i].settings;
+  }
+
   getAccounts(): SingleAccount[] {
     return this._allAcconuts.accounts;
   }
@@ -144,10 +153,11 @@ export class PhpToolService {
   }
 
   updateUserGroupSettings(props: UserGroupSettingsProps, id?: string) {
-    if(id === undefined) return;
+    if(id === undefined || props == undefined) return;
     let storedSettings = new UserGroupSettings(props);
     let i = this._allUserGroups.userGroups.findIndex(u => u.uuid === id);
-
+    if(i === -1) return;
+    
     this._allUserGroups.userGroups[i].settings = storedSettings;
     this.dataChanged.next({});
   }

@@ -2,13 +2,13 @@
     <p>Pfad auf den Server</p>
     <mat-form-field appearance="fill" autocomplete="off">
         <mat-label>Pfad</mat-label>
-        <input matInput autocomplete="off" />
+        <input matInput autocomplete="off" [(ngModel)]="data.path"/>
     </mat-form-field>
 
     <p>Maximale Anzahl an Downloads</p>
     <mat-form-field appearance="fill" autocomplete="off">
         <mat-label>Maximale Downloads</mat-label>
-        <input matInput type="number" autocomplete="off" />
+        <input matInput type="number" autocomplete="off" [(ngModel)]="data.limit" />
     </mat-form-field>
 </div>
 <div matDialogActions>

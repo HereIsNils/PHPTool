@@ -79,15 +79,6 @@ export class UserGroup {
 
     constructor(props: UserGroupProps) {
 
-        /*if (props === undefined) {
-            this._uuid = "";
-            this._name = "";
-            this._users = [];
-            this._settings = {} as UserGroupSettings;
-
-            return;
-        }*/
-
         this._uuid = props.uuid ?? uuidv4();
         this._name = props.name;
         this._users = props.users.map(u => new SingleUser(u));

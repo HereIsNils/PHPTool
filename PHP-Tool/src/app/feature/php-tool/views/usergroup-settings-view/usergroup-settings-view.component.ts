@@ -22,22 +22,23 @@ export class UsergroupSettingsViewComponent implements OnInit {
   ) {}
 
   openSettingsDialog(): void {
-    const dialogRef = this.dialog.open(DialogSettingsComponent, {data: undefined});
+    let data = this.phpToolService.getUserGroupSettings(this.userGroupId);
+    const dialogRef = this.dialog.open(DialogSettingsComponent, {data});
 
     dialogRef.afterClosed().subscribe((result: UserGroupSettingsProps) => {
-      console.log("risntriestnirestniernstiernstiernsteirnstein", result, this.userGroupId);
-      
-      if(result.limit === null){
-        console.log("bl")
-        this.snackBar.open("Änderungen konnten nicht gespeichtert werden!", "", {duration: 3000});
+      if(result === undefined) {
+        this.snackBar.open("Keine Änderungen vorgenommen.", "", {duration: 3000}); 
         return;
-      } else {
-        console.log(result);
+      }
+      try{
         this.phpToolService.updateUserGroupSettings(result, this.userGroupId);
         this.snackBar.open("Änderungen erfolgreich gespeichert.", "", {duration: 3000});
-        return;
+      } catch(e) {
+        console.error(e);
+        this.snackBar.open("Änderungen konnten nicht gespeichtert werden!", "", {duration: 3000});
       }});
   }
+
   ngOnInit(): void {
   }
 
