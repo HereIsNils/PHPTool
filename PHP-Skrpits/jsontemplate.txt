@@ -135,7 +135,7 @@ array (
           'uuid' => 'ed30613c-338a-434d-bbaa-8619d427fab9',
           'name' => '3',
           'sn' => '3',
-          'praxis' => '3',
+          'praxis' => '32',
           'version' => '',
         ),
       ),
