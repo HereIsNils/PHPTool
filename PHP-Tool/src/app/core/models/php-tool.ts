@@ -11,14 +11,8 @@ export interface AllUserGroupsProps {
 export interface UserGroupProps {
     uuid?: string; // Unique id to identify the User Group
     name: string; // Name of the User Group
+    limit: string; // limits downloads per day
     users: SingleUserProps[]; // Array with all Users
-    settings: UserGroupSettingsProps; // Settings for the User Group
-}
-
-// Props for the settings of a User Group
-export interface UserGroupSettingsProps {
-    path: string; // Path on the FTP Server
-    limit: number; // Limit for how many users can download the file
 }
 
 // Props for a Single User
@@ -74,15 +68,15 @@ export class AllUserGroups {
 export class UserGroup {
     private _uuid: string;
     private _name: string;
+    private _limit: string;
     private _users: SingleUser[];
-    private _settings: UserGroupSettings;
 
     constructor(props: UserGroupProps) {
 
         this._uuid = props.uuid ?? uuidv4();
         this._name = props.name;
+        this._limit = props.limit;
         this._users = props.users.map(u => new SingleUser(u));
-        this._settings = props.settings = new UserGroupSettings(props.settings);
     }
 
     get uuid(): string {
@@ -96,12 +90,13 @@ export class UserGroup {
         this._name = newName;
     }
 
-    get settings(): UserGroupSettings {
-        return this._settings;
+    get limit(): string {
+        return this._limit;
     }
-    set settings(newSettings: UserGroupSettings) {
-        this._settings = newSettings;
+    set limit(newLimit: string) {
+        this._limit = newLimit;
     }
+
 
     get users(): SingleUser[] {
         return this._users;
@@ -114,39 +109,8 @@ export class UserGroup {
         return {
             uuid: this.uuid,
             name: this.name,
-            settings: this.settings,
+            limit: this.limit,
             users: this.users.map(u => u.getProps())
-        }
-    }
-}
-
-export class UserGroupSettings {
-    private _path: string;
-    private _limit: number;
-
-    constructor(props: UserGroupSettingsProps) {
-        this._path = props.path;
-        this._limit = props.limit;
-    }
-
-    get path(): string {
-        return this._path;
-    }
-    set path(newPath: string) {
-        this._path = newPath;
-    }
-
-    get limit(): number {
-        return this._limit;
-    }
-    set limit(newLimit: number) {
-        this._limit = newLimit;
-    }
-
-    getProps(): UserGroupSettingsProps {
-        return {
-            path: this.path,
-            limit: this.limit
         }
     }
 }
