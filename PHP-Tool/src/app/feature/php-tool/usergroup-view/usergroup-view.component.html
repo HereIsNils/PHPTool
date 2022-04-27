@@ -3,12 +3,14 @@
     <legend class="text-xl antialiased font-semibold px-2 ml-16">{{userGroup.name}}</legend>
 
     <div class="inner self-center">
-        <button mat-icon-button (click)="selectFile()">
-            <mat-icon>arrow_upward</mat-icon>
-        </button>
-        <button mat-icon-button (click)="updateUserGroup()">
-            <mat-icon>settings</mat-icon>
-        </button>
+        <div class="flex flex-row">
+            <button mat-icon-button (click)="selectFile()">
+                <mat-icon>arrow_upward</mat-icon>
+            </button>
+            <button mat-icon-button (click)="updateUserGroup()">
+                <mat-icon>settings</mat-icon>
+            </button>
+        </div>
         <app-user-list-view [userGroupId]="userGroupId" [userGroup]="userGroup"></app-user-list-view>
         <div>
             <button mat-icon-button color="accent" (click)="deleteUserGroup()">
