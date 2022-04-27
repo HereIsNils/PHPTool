@@ -9,10 +9,14 @@ $rootdir = $rootdir."/connectbase";
 $databasedir = $rootdir."/database";
 $logfile = $rootdir."/logs/".date("Y-m-d").".txt";
 
-// takes the json object sent from the website 
-$obj = json_decode($databasedir . "/userData.json", flase);
+// takes the json object sent from the website
+if(file_exists($databasedir . "/userData.json")){
+    $obj = file_get_contents($databasedir . "/userData.json", flase);
+    echo  $obj;
+} else {
+    $obj = null;
+}
 
-echo  $obj;
 
 exit();
 ?>

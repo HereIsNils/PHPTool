@@ -50,15 +50,18 @@ export class PhpToolService {
 
       try {
         xhttp.onload = function() {
+          if(this.responseText === null) return;
           const userGroupObj = JSON.parse(this.responseText);
           userGroups = userGroupObj;
           console.log("POST successful!")
         }
-        xhttp.open("POST", "getUserGroups.php");
+        xhttp.open("GET", "getUserGroups.php");
         xhttp.send();
 
         if(userGroups !== '') {
           this._allUserGroups = new AllUserGroups(JSON.parse(userGroups));
+          return;
+        } else {
           return;
         }
 
