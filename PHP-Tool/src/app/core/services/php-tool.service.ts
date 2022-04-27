@@ -31,6 +31,7 @@ export class PhpToolService {
   /*---------- database stuff ------------*/
 
   saveDataJson(): void {
+    console.log("before error", );
     let data = JSON.stringify(this._allUserGroups.getProps(), null, 2);
     try {
       xhttp.onload = function() {
@@ -46,11 +47,14 @@ export class PhpToolService {
   }
 
   loadAllUserGroups(): void {
-    let userGroups = '';
-
+    const service = this;
       try {
         xhttp.onload = function(){
           console.log("post response", this.responseText)
+
+          if(this.responseText === null || this.responseText === "") return;
+          service._allUserGroups = new AllUserGroups(JSON.parse(this.responseText));
+          service.dataChanged.next({});
 
           console.log("POST successful!", xhttp.status, this.status)
         }
@@ -62,8 +66,6 @@ export class PhpToolService {
         xhttp.abort();
         console.error(err);
     }
-
-    console.log("raosietnarsoetnraiestneiorasnteni");
   }
 
   /*---------- get ------------*/

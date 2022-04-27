@@ -10,13 +10,15 @@ $databasedir = $rootdir."/database";
 $logfile = $rootdir."/logs/".date("Y-m-d").".txt";
 
 // takes the json object sent from the website
-if(file_exists($databasedir . "/userData.json")){
-    $obj = file_get_contents($databasedir . "/userData.json", flase);
-    echo  $obj;
-} else {
-    $obj = null;
+try {
+    $file = fopen($databasedir . "/userData.json", "r");
+    $data = fread($file, filesize($databasedir . "/userData.json"));
+    echo $data;
+    fclose($file);
+} catch(Error $e) {
+    $error = 'console.log('.$e.')';
+    echo "error:", $error;
+    echo null;
 }
-
-
 exit();
 ?>

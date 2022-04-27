@@ -10,14 +10,19 @@ $databasedir = $rootdir."/database";
 $logfile = $rootdir."/logs/".date("Y-m-d").".txt";
 
 // takes the json object sent from the website 
-$obj = json_decode($_POST["userGroups"], flase);
 
 try {
+    $obj = file_get_contents('php://input');
     // creates or overwrides file with data from the POST request
-    $file = fopen($databasedir . "/userData.json", "w+", false, $obj);
+    $file = fopen($databasedir . "/userData.json", "w+");
+    fwrite($file, $obj);
     fclose($file);
+    $js_code = 'console.log('.json_encode($obj, JSON_PRETTY_PRINT).')';
+    echo $js_code;
 } catch(Exception $e) {
-    echo $e->getMessage();
+    $error = 'console.log('.$e.')';
+    echo "error";
+    echo $error;
     fclose($file);
 }
 
