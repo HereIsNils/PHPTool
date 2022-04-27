@@ -56,7 +56,7 @@ export class TableViewComponent implements OnInit {
 
   refreshUsers() {
     try {
-      this.users = this.phpToolService.getAllUsers(this.userGroupId);
+      this.dataSource.setData(this.phpToolService.getAllUsers(this.userGroupId));
     } catch {
       return;
     }
