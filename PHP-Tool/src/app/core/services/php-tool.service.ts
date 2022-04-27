@@ -31,7 +31,6 @@ export class PhpToolService {
   /*---------- database stuff ------------*/
 
   saveDataJson(): void {
-    console.log("before error", );
     let data = JSON.stringify(this._allUserGroups.getProps(), null, 2);
     try {
       xhttp.onload = function() {
