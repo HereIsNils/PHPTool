@@ -19,7 +19,8 @@ export class PhpToolComponent implements OnInit {
 
 
   constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {
-    this.dataChangeSubscription = phpToolService.onDataChaged().subscribe(() => this.refreshData())
+    this.dataChangeSubscription = phpToolService.onDataChaged().subscribe(() => this.refreshData());
+    console.log("constructor", this.userGroups);
   }
 
   openDialog(): void {

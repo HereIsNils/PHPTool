@@ -18,6 +18,7 @@ export class PhpToolService {
   constructor() {
     this._allUserGroups = new AllUserGroups();
     this._allAcconuts = new AllAccounts();
+    // get all user groups from the database when the page gets loaded
     this.loadAllUserGroups();
 
     this.dataChanged.subscribe(() => this.saveDataJson());
@@ -30,15 +31,14 @@ export class PhpToolService {
   /*---------- database stuff ------------*/
 
   saveDataJson(): void {
+    let data = JSON.stringify(this._allUserGroups.getProps(), null, 2);
     try {
       xhttp.onload = function() {
-        console.log("Data send.");
+        console.log("Data send:", data);
       }
-      console.log(JSON.stringify(this._allUserGroups.getProps(), null, 2));
       xhttp.open("POST", "setUserGroups.php");
       xhttp.setRequestHeader("Connect-type", "application/x-www-form-urlecoded");
-      xhttp.send(JSON.stringify(this._allUserGroups.getProps(), null, 2));
-     
+      xhttp.send(data);
     } catch (err) {
       xhttp.abort();
       console.error(err); return;
@@ -49,26 +49,21 @@ export class PhpToolService {
     let userGroups = '';
 
       try {
-        xhttp.onload = function() {
-          if(this.responseText === null) return;
-          const userGroupObj = JSON.parse(this.responseText);
-          userGroups = userGroupObj;
-          console.log("POST successful!")
-        }
-        xhttp.open("GET", "getUserGroups.php");
-        xhttp.send();
+        xhttp.onload = function(){
+          console.log("post response", this.responseText)
 
-        if(userGroups !== '') {
-          this._allUserGroups = new AllUserGroups(JSON.parse(userGroups));
-          return;
-        } else {
-          return;
+          console.log("POST successful!", xhttp.status, this.status)
         }
-
+        xhttp.open("POST", "getUserGroups.php");
+        //xhttp.setRequestHeader("Connect-type", "application/x-www-form-urlecoded");
+        xhttp.send()
+        
       } catch (err) {
         xhttp.abort();
         console.error(err);
     }
+
+    console.log("raosietnarsoetnraiestneiorasnteni");
   }
 
   /*---------- get ------------*/
