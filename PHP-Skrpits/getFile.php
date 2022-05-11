@@ -119,3 +119,4 @@ function buildPath($dir){
     $fulldir = $dir.'/'.$files[0];
     return $fulldir;
 }
+?>

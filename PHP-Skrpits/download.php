@@ -155,3 +155,4 @@ if (file_exists($updateFile))
 			exit();
 		}
 exit();
+?>
