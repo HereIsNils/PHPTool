@@ -1,7 +1,7 @@
 <?php 
 
-// Diese Datei bereitet die Daten die von der Einheit kommen auf und gibt sie an users.php weiter
-// Dann wird auf die Update Datei gewartet und an die Einheit zurück gegeben
+// manages the request from the unit and returns correct vlaue
+// this can either be a file or nothing if a newer or the same version is already downloaded or/and installed
 
 //TODO
 //UserGruppe finden (wenn nichts gefunden wird -> public version)
@@ -66,7 +66,19 @@ $userIp = getUserIpAddr();
 
 // get the file from getFile.php
 include "getFile.php";
+// if $updateFile is false, no update is neccessary beacause newer version is already installed or downloaded
 $updateFile = getUpdateFile($parameters);
+
+if(!$updateFile){
+    // just log the request
+    $logstring = sprintf("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;noDL:%s".PHP_EOL, $datetime, $userIp, $patcomid, $installedversion, $downloadedversion, $tutype, $tuserial, $tutable, $tufw, $tulic, $version);
+    file_put_contents($logfile, $logstring, FILE_APPEND);
+    die();
+} else {
+    // prepare and send the file
+
+    
+}
 
 exit()
 ?>

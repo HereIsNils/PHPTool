@@ -6,24 +6,32 @@
 $rootdir = $_SERVER["DOCUMENT_ROOT"];
 $rootdir = $rootdir . "/connectbase";
 $databasedir = $rootdir . "/database";
+$publicdir = $rootdir."/public";
 $userGroupArray = json_decode(file_get_contents($databasedir . "/userGroup.json", true)); // associative true so the json file gets returned as an associative array
 
 // args[7]: 0:patcomid, 1:installedversion, 2:downloadedversion, 3:tutype, 4:tuserial, 5:tutable, 6:tufw, 7:tulic
 function getUpdateFile($args)
 {
-    $updateFile = "0";
+    $updateFilePath = "";
+    $iv = convertVersionToNum($args[1]);
+    $dv = convertVersionToNum($args[2]);
 
     // get usergroup or use public
     $a = lookForPatcomid($args[0]);
     if ($a[0]) {
         // true
-        $updateFile = updateFromUG($a[1], $args[1], $args[2]);
+        $updateFilePath = buildPathUG($a[1], $iv, $dv);
     } else {
         // false -> public
-        $updateFile = updateFromPb($args[1], $args[2]);
+        $updateFilePath = buildPathPublic($iv, $dv);
+
+        if(!$updateFilePath){
+            // file path is false -> no update neccessary
+            $updateFilePath = false;
+        }
     }
 
-    return $updateFile;
+    return $updateFilePath;
 }
 
 // looks if the id is found in any usergroup created on the website
@@ -66,18 +74,48 @@ function lookForPatcomid($id)
     return array($flag, $userGroup);
 }
 
-// get update file from userGroup
-function updateFromUG($userGroup, $installedV, $downloadedV)
+// returns the path to the update file for a given usergorup if neccessary by verison
+function buildPathUG($userGroup, $installedV, $downloadedV)
 {
-    $updateFile = "0";
+    global $rootdir;
+    $fullpath = buildPath($rootdir.'/'.$userGroup);
+    $filename = basename($fullpath, ".kavoupdate");
+    $version = convertVersionToNum($filename);
+    
+    // compare all versions and determine if update is neccessary
+    if($installedV >= $version || $downloadedV >= $version){
+        $fullpath = false;
+    }
 
-    return $updateFile;
+    return $fullpath;
 }
 
-//get update file from public group
-function updateFromPb($installedV, $downloadedV)
+// returns the path for the "public group" if neccessary by version
+function buildPathPublic($installedV, $downloadedV)
 {
-    $updateFile = "0";
+    global $publicdir;
+    $fullpath = buildPath($publicdir);
+    $filename = basename($fullpath, ".kavoupdate");
+    $version = convertVersionToNum($filename);
+    
+    // compare all versions and determine if update is neccessary
+    if($installedV >= $version || $downloadedV >= $version){
+        $fullpath = false;
+    }
+    
+    return $fullpath;
+}
 
-    return $updateFile;
+// removes all dots and letters from a given update file or version number and returns a clean number to work with
+function convertVersionToNum($arg){
+    $replaced = str_ireplace(array(".", "KCbaseV"), '', $arg);
+    $num = intval($replaced);
+    return $num;
+}
+
+// builds the full path form given directory, returns path for highest version number in the directory
+function buildPath($dir){
+    $files = scandir($dir, 1);
+    $fulldir = $dir.'/'.$files[0];
+    return $fulldir;
 }
