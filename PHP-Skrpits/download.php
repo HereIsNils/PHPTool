@@ -73,6 +73,9 @@ if(!$updateFile){
 }
 
 $filename = basename($updateFile);
+try{
+
+
 if (file_exists($updateFile)) 
 		{
 				header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
@@ -154,5 +157,10 @@ if (file_exists($updateFile))
 			
 			exit();
 		}
+	} catch (Exception $e) {
+		$error = 'console.log('.$e.')';
+		echo "error";
+    	echo $error;
+	}
 exit();
 ?>
