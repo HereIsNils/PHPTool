@@ -19,10 +19,10 @@ if(isset($_FILES['file']['name'])){
     $file_extension = strtolower($file_extension);
  
     // Valid extensions
-    $valid_ext = array("pdf","doc","docx","jpg","png","jpeg");
+    $valid_ext = "txt";
  
     $response = 0;
-    if(in_array($file_extension,$valid_ext)){
+    if($file_extension === $response){
        // Upload file
        if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
           $response = 1;
