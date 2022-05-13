@@ -37,6 +37,10 @@ export class PhpToolComponent implements OnInit {
     });
   }
 
+  uploadPublicFile(): void {
+    
+  }
+
   createUserGroup(): void {
     const dialogRef = this.dialog.open<DialogCreateUsergroupComponent, UserGroupProps>(DialogCreateUsergroupComponent, { data: undefined });
 
