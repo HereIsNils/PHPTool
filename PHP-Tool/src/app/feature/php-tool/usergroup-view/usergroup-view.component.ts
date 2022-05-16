@@ -77,6 +77,7 @@ export class UsergroupViewComponent implements OnInit {
   }
 
   selectFile(): void {
+    const app = this;
     let input = document.createElement('input');
     input.type = 'file';
     input.accept = ".kavoupdate";
@@ -107,18 +108,14 @@ export class UsergroupViewComponent implements OnInit {
             let response = this.responseText;
             console.log(response);
             if (response === "1") {
-              alert("Upload successfully.");
+              app.snackBar.open("Datei erfolgreich hochgeladen.", "", { duration: 3000 });
             } else {
-              alert("File not uploaded.");
+              app.snackBar.open("Datei konnte nicht hochgeladen werden.", "", { duration: 3000 });
             }
           }
         };
         // Send request with data
         xhttp.send(fd);
-
-
-      } else {
-        alert("Please select a file");
       }
     }
     input.click();

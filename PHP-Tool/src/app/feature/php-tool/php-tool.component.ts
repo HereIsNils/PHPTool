@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { SingleAccount, SingleAccountProps, SingleUser, UserGroup, UserGroupProps } from 'src/app/core/models/php-tool';
 import { PhpToolService } from 'src/app/core/services/php-tool.service';
@@ -18,7 +19,7 @@ export class PhpToolComponent implements OnInit {
   private dataChangeSubscription: Subscription;
 
 
-  constructor(private phpToolService: PhpToolService, public dialog: MatDialog) {
+  constructor(private phpToolService: PhpToolService, public dialog: MatDialog, public snackBar: MatSnackBar) {
     this.dataChangeSubscription = phpToolService.onDataChaged().subscribe(() => this.refreshData());
   }
 
@@ -38,6 +39,7 @@ export class PhpToolComponent implements OnInit {
   }
 
   uploadPublicFile(): void {
+    const app = this;
     let input = document.createElement('input');
     input.type = 'file';
     input.accept = ".kavoupdate";
@@ -58,14 +60,15 @@ export class PhpToolComponent implements OnInit {
 
         // call on request changes state
         xhttp.onreadystatechange = function () {
+          
           if (this.readyState == 4 && this.status == 200) {
 
             let response = this.responseText;
             console.log(response);
             if (response === "1") {
-              alert("Upload successfully.");
+              app.snackBar.open("Datei erfolgreich hochgeladen.", "", { duration: 3000 });
             } else {
-              alert("File not uploaded.");
+              app.snackBar.open("Datei konnte nicht hochgeladen werden.", "", { duration: 3000 });
             }
           }
         };
