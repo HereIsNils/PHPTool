@@ -40,7 +40,7 @@ export class PhpToolComponent implements OnInit {
   uploadPublicFile(): void {
     let input = document.createElement('input');
     input.type = 'file';
-    input.accept = ".txt";
+    input.accept = ".kavoupdate";
     input.onchange = _ => {
       let file = input.files;
 
@@ -51,7 +51,7 @@ export class PhpToolComponent implements OnInit {
         fd.append('file', files);
         fd.append('dir', 'public');
 
-        var xhttp = new XMLHttpRequest();
+        let xhttp = new XMLHttpRequest();
 
         // Set POST method and ajax file path
         xhttp.open("POST", "uploadFile.php", true);
