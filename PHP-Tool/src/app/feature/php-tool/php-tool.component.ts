@@ -38,7 +38,46 @@ export class PhpToolComponent implements OnInit {
   }
 
   uploadPublicFile(): void {
-    
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.name = "updateFile";
+    input.onchange = _ => {
+      let file = input.files;
+
+      if (file !== null) {
+        console.log(file[0]);
+
+        var fd = new FormData();
+        var files = file[0];
+        fd.append('file', files);
+
+        var xhttp = new XMLHttpRequest();
+
+        // Set POST method and ajax file path
+        xhttp.open("POST", "uploadFile.php", true);
+
+        // call on request changes state
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+
+            let response = this.responseText;
+            console.log(response);
+            if (response === "1") {
+              alert("Upload successfully.");
+            } else {
+              alert("File not uploaded.");
+            }
+          }
+        };
+        // Send request with data
+        xhttp.send(fd);
+
+
+      } else {
+        alert("Please select a file");
+      }
+    }
+    input.click();
   }
 
   createUserGroup(): void {
