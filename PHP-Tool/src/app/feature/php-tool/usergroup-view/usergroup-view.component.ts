@@ -48,10 +48,48 @@ export class UsergroupViewComponent implements OnInit {
   selectFile(): void {
     let input = document.createElement('input');
     input.type = 'file';
+    input.accept = ".txt";
     input.onchange = _ => {
-      let file = input.files
-      console.log(file);
-    };
+      let file = input.files;
+
+      if (file !== null) {
+
+        let fd = new FormData();
+        let files = file[0]; // files contains all data from the selected file
+        fd.append('file', files);
+
+        if(this.userGroup?.name === undefined) {
+          console.error("No group name found");
+          return;
+        }
+        fd.append('dir', this.userGroup.name);
+
+        var xhttp = new XMLHttpRequest();
+
+        // Set POST method and ajax file path
+        xhttp.open("POST", "uploadFile.php", true);
+
+        // call on request changes state
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+
+            let response = this.responseText;
+            console.log(response);
+            if (response === "1") {
+              alert("Upload successfully.");
+            } else {
+              alert("File not uploaded.");
+            }
+          }
+        };
+        // Send request with data
+        xhttp.send(fd);
+
+
+      } else {
+        alert("Please select a file");
+      }
+    }
     input.click();
   }
 

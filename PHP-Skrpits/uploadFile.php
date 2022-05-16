@@ -6,12 +6,18 @@
 $rootdir = $_SERVER["DOCUMENT_ROOT"];
 $rootdir = $rootdir."/connectbase";
 
-if(isset($_FILES['file']['name'])){
-    // file name
-    $filename = $_FILES['file']['name']; 
+if(isset($_FILES['file']['name']) && isset($_REQUEST['dir'])){
+   // file and direcory name
+   $filename = $_FILES['file']['name'];
+   $dir = $_REQUEST['dir'];
+
+   // create directory if it does not exist already
+   if(!file_exists($rootdir."/".$dir)) {
+      mkdir($rootdir."/".$dir);
+   }
 
     // location, either overrides file in existing dir or creates new dir
-    $location = $rootdir."/public"."/".$filename;
+    $location = $rootdir."/".$dir."/".$filename;
     
     // file extension
     $file_extension = pathinfo($location, PATHINFO_EXTENSION);
@@ -33,5 +39,6 @@ if(isset($_FILES['file']['name'])){
     echo $response;
     exit();
  }
+ echo $_REQUEST['dir'];
  echo $response;
  ?>

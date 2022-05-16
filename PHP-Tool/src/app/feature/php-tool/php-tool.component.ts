@@ -40,16 +40,16 @@ export class PhpToolComponent implements OnInit {
   uploadPublicFile(): void {
     let input = document.createElement('input');
     input.type = 'file';
-    input.name = "updateFile";
+    input.accept = ".txt";
     input.onchange = _ => {
       let file = input.files;
 
       if (file !== null) {
-        console.log(file[0]);
 
-        var fd = new FormData();
-        var files = file[0];
+        let fd = new FormData();
+        let files = file[0]; // files contains all data from the selected file
         fd.append('file', files);
+        fd.append('dir', 'public');
 
         var xhttp = new XMLHttpRequest();
 
