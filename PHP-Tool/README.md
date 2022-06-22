@@ -33,7 +33,6 @@ To get the all the packages, navigate to `3rdparty/PHPTool_framework`. Unpack th
 
 ### Manual installation
 
-To install the packages manually, [create a new porject](https://angular.io/guide/setup-local). Now copy the new `node_modules` folder into this projects directory
-and delete the new project.
-
-Delete the file `tailwind.config.json`. Open the command promt and navigate to this directory. Refer to [Install Tailwind](https://tailwindcss.com/docs/guides/angular) and continue with step 2.
+Open the command prompt and navigate to this directory. Run the command `npm install`.
+If you don't have npm installed, please download [Node.js](https://nodejs.org/en/download/). Node.js includes npm.
+You will need both Node.js and npm to continue.
