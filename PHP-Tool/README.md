@@ -1,3 +1,4 @@
+
 # PHPTool
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
@@ -25,3 +26,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Framework
+
+To get the all the packages, navigate to `3rdparty/PHPTool_framework`. Unpack the folder `node_modules.zip` into this directory.
+
+### Manual installation
+
+To install the packages manually, [create a new porject](https://angular.io/guide/setup-local). Now copy the new `node_modules` folder into this projects directory
+and delete the new project.
+
+Delete the file `tailwind.config.json`. Open the command promt and navigate to this directory. Refer to [Install Tailwind](https://tailwindcss.com/docs/guides/angular) and continue with step 2.
