@@ -1,3 +1,4 @@
+
 # PHPTool
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
@@ -25,3 +26,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Framework
+
+To get the all the packages, navigate to `3rdparty/PHPTool_framework`. Unpack the folder `node_modules.zip` into this directory.
+
+### Manual installation
+
+Open the command prompt and navigate to this directory. Run the command `npm install`.
+If you don't have npm installed, please download [Node.js](https://nodejs.org/en/download/). Node.js includes npm.
+You will need both Node.js and npm to continue.
